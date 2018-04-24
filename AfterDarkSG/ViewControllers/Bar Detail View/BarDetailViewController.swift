@@ -13,7 +13,6 @@ class BarDetailViewController: UIViewController,UICollectionViewDelegate,UIColle
     public static let singleton = BarDetailViewController(nibName: "BarDetailViewController", bundle: Bundle.main)
     
     
-    private let images = [#imageLiteral(resourceName: "image-bank-0"),#imageLiteral(resourceName: "image-bank-1"),#imageLiteral(resourceName: "image-bank-2"),#imageLiteral(resourceName: "image-bank-3"),#imageLiteral(resourceName: "image-bank-4"),#imageLiteral(resourceName: "image-bank-5"),#imageLiteral(resourceName: "image-bank-6"),#imageLiteral(resourceName: "image-bank-7"),#imageLiteral(resourceName: "image-bank-8"),#imageLiteral(resourceName: "image-bank-9")]
     @IBOutlet weak var discountTabButton: UIButton!
     @IBOutlet weak var aboutTabButton: UIButton!
     @IBOutlet weak var aboutTextView: UITextView!
@@ -115,7 +114,7 @@ class BarDetailViewController: UIViewController,UICollectionViewDelegate,UIColle
                 index = index - 10
             }
             
-            cell.imageView.image = images[index]
+            cell.imageView.image = DiscountManager.images[index]
         }
         
         return cell

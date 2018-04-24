@@ -7,11 +7,13 @@
 //
 
 import Foundation
+import UIKit
 
 public class DiscountManager
 {
     private static var discounts = [Discount]()
     
+    public static let images = [#imageLiteral(resourceName: "image-bank-0"),#imageLiteral(resourceName: "image-bank-1"),#imageLiteral(resourceName: "image-bank-2"),#imageLiteral(resourceName: "image-bank-3"),#imageLiteral(resourceName: "image-bank-4"),#imageLiteral(resourceName: "image-bank-5"),#imageLiteral(resourceName: "image-bank-6"),#imageLiteral(resourceName: "image-bank-7"),#imageLiteral(resourceName: "image-bank-8"),#imageLiteral(resourceName: "image-bank-9")]
     public static let didLoadDiscounts = Event()
     
     public static func Initialize()

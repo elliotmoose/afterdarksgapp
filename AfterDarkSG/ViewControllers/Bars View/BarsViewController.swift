@@ -45,7 +45,14 @@ class BarsViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
     override func viewDidAppear(_ animated: Bool) {
         if tableView.visibleCells.count == 0
         {
-            self.ReloadData()
+            if BarManager.GetList().count == 0
+            {
+                BarManager.LoadBars()
+            }
+            else
+            {
+                self.ReloadData()
+            }
         }
     }
     
