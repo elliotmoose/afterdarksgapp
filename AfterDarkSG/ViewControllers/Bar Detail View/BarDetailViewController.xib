@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="Mohave-Bold.otf">
+            <string>Mohave-Bold</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="BarDetailViewController" customModule="AfterDarkSG" customModuleProvider="target">
+            <connections>
+                <outlet property="aboutTabButton" destination="8Jo-yl-82C" id="j9a-aP-xK1"/>
+                <outlet property="aboutTextView" destination="YN5-xo-mQ2" id="oey-kJ-2jD"/>
+                <outlet property="collectionView" destination="7K8-i1-CF7" id="Pjl-c1-a7w"/>
+                <outlet property="discountTabButton" destination="n8s-bD-dId" id="DSb-Nn-eCV"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="n8s-bD-dId">
+                    <rect key="frame" x="0.0" y="220" width="187.5" height="35"/>
+                    <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="35" id="LL0-nO-xm8"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" name="Mohave-Bold" family="Mohave" pointSize="16"/>
+                    <state key="normal" title="AFTERDARK SPECIALS">
+                        <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <connections>
+                        <action selector="DidSelectTab:" destination="-1" eventType="touchUpInside" id="Nuk-Tu-QCm"/>
+                    </connections>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8Jo-yl-82C">
+                    <rect key="frame" x="187.5" y="220" width="187.5" height="35"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <fontDescription key="fontDescription" name="Mohave-Bold" family="Mohave" pointSize="16"/>
+                    <state key="normal" title="ABOUT US">
+                        <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <connections>
+                        <action selector="DidSelectTab:" destination="-1" eventType="touchUpInside" id="Shg-4T-CyN"/>
+                    </connections>
+                </button>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Gvi-gK-EKo">
+                    <rect key="frame" x="0.0" y="255" width="375" height="412"/>
+                    <subviews>
+                        <textView clipsSubviews="YES" multipleTouchEnabled="YES" alpha="0.0" contentMode="scaleToFill" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="YN5-xo-mQ2">
+                            <rect key="frame" x="8" y="8" width="359" height="396"/>
+                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                            <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
+                            <color key="textColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                            <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                        </textView>
+                        <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="7K8-i1-CF7">
+                            <rect key="frame" x="8" y="8" width="359" height="396"/>
+                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                            <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="q73-Km-q59">
+                                <size key="itemSize" width="50" height="50"/>
+                                <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                            </collectionViewFlowLayout>
+                        </collectionView>
+                    </subviews>
+                    <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstAttribute="bottom" secondItem="YN5-xo-mQ2" secondAttribute="bottom" constant="8" id="1Je-WL-2XP"/>
+                        <constraint firstItem="7K8-i1-CF7" firstAttribute="leading" secondItem="Gvi-gK-EKo" secondAttribute="leading" constant="8" id="QbQ-pP-dhz"/>
+                        <constraint firstItem="YN5-xo-mQ2" firstAttribute="top" secondItem="Gvi-gK-EKo" secondAttribute="top" constant="8" id="SUW-OK-doP"/>
+                        <constraint firstAttribute="trailing" secondItem="7K8-i1-CF7" secondAttribute="trailing" constant="8" id="TG1-vE-YaT"/>
+                        <constraint firstItem="YN5-xo-mQ2" firstAttribute="leading" secondItem="Gvi-gK-EKo" secondAttribute="leading" constant="8" id="Upf-qD-taG"/>
+                        <constraint firstAttribute="bottom" secondItem="7K8-i1-CF7" secondAttribute="bottom" constant="8" id="bmd-Fe-EQa"/>
+                        <constraint firstAttribute="trailing" secondItem="YN5-xo-mQ2" secondAttribute="trailing" constant="8" id="iCO-6w-GTj"/>
+                        <constraint firstItem="7K8-i1-CF7" firstAttribute="top" secondItem="Gvi-gK-EKo" secondAttribute="top" constant="8" id="q82-ya-gZm"/>
+                    </constraints>
+                </view>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="EtI-QV-eUH">
+                    <rect key="frame" x="0.0" y="20" width="375" height="200"/>
+                    <subviews>
+                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Category_Craft Beers" translatesAutoresizingMaskIntoConstraints="NO" id="ftK-9o-RUv">
+                            <rect key="frame" x="0.0" y="0.0" width="375" height="200"/>
+                        </imageView>
+                    </subviews>
+                    <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstAttribute="bottom" secondItem="ftK-9o-RUv" secondAttribute="bottom" id="oeO-W8-u5n"/>
+                        <constraint firstAttribute="trailing" secondItem="ftK-9o-RUv" secondAttribute="trailing" id="rGK-97-epF"/>
+                        <constraint firstItem="ftK-9o-RUv" firstAttribute="leading" secondItem="EtI-QV-eUH" secondAttribute="leading" id="sVI-w1-FDf"/>
+                        <constraint firstItem="ftK-9o-RUv" firstAttribute="top" secondItem="EtI-QV-eUH" secondAttribute="top" id="tBJ-Y8-DJ4"/>
+                        <constraint firstAttribute="height" constant="200" id="z78-KR-dkS"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="n8s-bD-dId" firstAttribute="height" secondItem="8Jo-yl-82C" secondAttribute="height" id="7b0-kl-zbX"/>
+                <constraint firstItem="n8s-bD-dId" firstAttribute="width" secondItem="8Jo-yl-82C" secondAttribute="width" id="BMv-tt-VPn"/>
+                <constraint firstItem="EtI-QV-eUH" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="Dve-go-oze"/>
+                <constraint firstItem="8Jo-yl-82C" firstAttribute="centerY" secondItem="n8s-bD-dId" secondAttribute="centerY" id="E6p-CD-R1C"/>
+                <constraint firstItem="Gvi-gK-EKo" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="IVP-XA-WSm"/>
+                <constraint firstItem="n8s-bD-dId" firstAttribute="top" secondItem="EtI-QV-eUH" secondAttribute="bottom" id="Iml-0Y-VYX"/>
+                <constraint firstItem="Gvi-gK-EKo" firstAttribute="trailing" secondItem="fnl-2z-Ty3" secondAttribute="trailing" id="JVG-e7-IGF"/>
+                <constraint firstItem="Gvi-gK-EKo" firstAttribute="top" secondItem="n8s-bD-dId" secondAttribute="bottom" id="JzV-1M-ocy"/>
+                <constraint firstItem="Gvi-gK-EKo" firstAttribute="bottom" secondItem="fnl-2z-Ty3" secondAttribute="bottom" id="P7c-sr-Soj"/>
+                <constraint firstItem="EtI-QV-eUH" firstAttribute="trailing" secondItem="fnl-2z-Ty3" secondAttribute="trailing" id="a2x-RC-QPe"/>
+                <constraint firstItem="EtI-QV-eUH" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="eJi-5O-8Fq"/>
+                <constraint firstItem="8Jo-yl-82C" firstAttribute="leading" secondItem="n8s-bD-dId" secondAttribute="trailing" id="w6f-dz-qGf"/>
+                <constraint firstItem="n8s-bD-dId" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="wzV-1C-l6v"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="8Jo-yl-82C" secondAttribute="trailing" id="xDW-ZN-NEq"/>
+            </constraints>
+            <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
+            <point key="canvasLocation" x="34.5" y="53.5"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="Category_Craft Beers" width="3648" height="2736"/>
+    </resources>
+</document>
