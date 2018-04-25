@@ -59,16 +59,16 @@ class WalletViewController: UIViewController,UICollectionViewDelegate,UICollecti
         if indexPath.row >= 0 && indexPath.row < UserManager.wallet.count
         {
             cell.DisplayDiscount(UserManager.wallet[indexPath.row])
-            
-            
-            var index = indexPath.row
-            
-            while index >= 10
-            {
-                index = index - 10
-            }
-            
-            cell.imageView.image = DiscountManager.images[index]
+//
+//
+//            var index = indexPath.row
+//
+//            while index >= 10
+//            {
+//                index = index - 10
+//            }
+//            
+//            cell.imageView.image = DiscountManager.images[index]
         }
         
         return cell

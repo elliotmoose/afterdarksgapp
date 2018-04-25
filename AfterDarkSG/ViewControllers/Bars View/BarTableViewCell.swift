@@ -35,6 +35,17 @@ class BarTableViewCell: UITableViewCell {
     {
         self.nameLabel.text = bar.name
         self.locationLabel.text = bar.address_summary
-        self.priceLabel.text = "$$$"
+        self.priceLabel.text = bar.price
+        
+        if let image = bar.GetDisplayImage()
+        {
+            self.backgroundImage.alpha = 0.55
+            self.backgroundImage.image = image
+        }
+        else
+        {
+            self.backgroundImage.alpha = 0.1
+            self.backgroundImage.image = #imageLiteral(resourceName: "Category_Pre-Drinks")
+        }
     }
 }

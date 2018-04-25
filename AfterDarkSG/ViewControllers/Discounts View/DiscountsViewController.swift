@@ -55,16 +55,6 @@ class DiscountsViewController: UIViewController,UICollectionViewDelegate,UIColle
         if indexPath.row >= 0 && indexPath.row < DiscountManager.GetDiscounts().count
         {
             cell.DisplayDiscount(DiscountManager.GetDiscounts()[indexPath.row])
-            
-            
-            var index = indexPath.row
-            
-            while index >= 10
-            {
-                index = index - 10
-            }
-            
-            cell.imageView.image = DiscountManager.images[index]
         }
         
         return cell

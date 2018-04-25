@@ -1,14 +1,16 @@
 import UIKit
+
 public class Bar : NSObject{
     
     var name : String = ""
     var ID : Int = 0
     
     var discounts = [Discount]()
-    var Images: [UIImage] = []
+    var Images: [BarImage] = []
     
     //info
     var about : String = ""
+    var price : String = ""
     var tags : String = ""
     var contact : String = ""
     var website : String = ""
@@ -50,6 +52,11 @@ public class Bar : NSObject{
         if let about = dict["about"] as? String
         {
             self.about = about
+        }
+        
+        if let price = dict["price"] as? String
+        {
+            self.price = price
         }
         
         if let contact = dict["contact"] as? String
@@ -143,6 +150,19 @@ public class Bar : NSObject{
         else
         {
             return nil
+        }
+    }
+    
+    public func GetDisplayImage() -> BarImage?
+    {
+        if Images.count == 0
+        {
+            return nil
+        }
+        
+        else
+        {
+            return Images[0]
         }
     }
     

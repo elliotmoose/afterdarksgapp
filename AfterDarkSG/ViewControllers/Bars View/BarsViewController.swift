@@ -40,6 +40,10 @@ class BarsViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
         BarManager.didLoadBars.addHandler {
             self.ReloadData()
         }
+        
+        ImageManager.didLoadABarImage.addHandler { (bar_id) in
+            self.ReloadData()
+        }
     }
     
     override func viewDidAppear(_ animated: Bool) {

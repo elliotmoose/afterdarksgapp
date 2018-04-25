@@ -34,6 +34,7 @@ class DiscountCollectionViewCell: UICollectionViewCell {
         self.nameLabel.text = discount.name
         self.amountLabel.text = discount.amount
         self.availCountLabel.text = "\(discount.curAvailCount)/\(discount.maxAvailCount)"
+        self.imageView.image = discount.image
         
         if discount.curAvailCount == 0
         {

@@ -41,6 +41,15 @@ public class DiscountManager
                     for discountDict in discountDicts
                     {
                         let discount = Discount(dict: discountDict)
+                        
+                        var imageIndex = discounts.count
+                        while imageIndex >= images.count
+                        {
+                            imageIndex = imageIndex - images.count
+                        }
+                        
+                        discount.image = images[imageIndex]
+                        
                         discounts.append(discount)
                     }
                     

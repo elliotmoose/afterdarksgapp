@@ -70,7 +70,7 @@ public class BarManager
                     {
                         //add bar to list
                         let bar = Bar(barDict)
-                        list.append(bar)
+                        list.append(bar)                        
                     }
                     
                     didLoadBars.raise()
@@ -88,27 +88,7 @@ public class BarManager
         }
     }
     
-    public static func LoadBarImage(_ bar : Bar)
-    {
-        let url = Network.domain + "BarImage?ID=\(bar.ID)"
-        
-        Network.singleton.DataFromUrl(url) { (success, output) in
-            do
-            {
-                guard let output = output else {throw NSError("no output")}
-                guard let image = UIImage(data: output) else {throw NSError("invalid image")}
-                
-                bar.Images.insert(image, at: 0)
-            }
-            catch let error as NSError
-            {
-                NSLog("\(error)")
-
-            }
-
-        }
-        
-    }
+ 
 
     public static func LoadBarFull(_ bar : Bar)
     {

@@ -105,16 +105,6 @@ class BarDetailViewController: UIViewController,UICollectionViewDelegate,UIColle
         if let discount = displayedBar?.DiscountAtIndex(indexPath.row)
         {
             cell.DisplayDiscount(discount)
-            
-            
-            var index = indexPath.row
-            
-            while index >= 10
-            {
-                index = index - 10
-            }
-            
-            cell.imageView.image = DiscountManager.images[index]
         }
         
         return cell
@@ -126,16 +116,12 @@ class BarDetailViewController: UIViewController,UICollectionViewDelegate,UIColle
             if discount.curAvailCount != 0
             {
                 DiscountDetailViewController.singleton.DisplayDiscount(discount)
-            self.navigationController?.pushViewController(DiscountDetailViewController.singleton, animated: true)
+                self.navigationController?.pushViewController(DiscountDetailViewController.singleton, animated: true)
             }
         }
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        
-        
-        
-        
         let height = (Sizing.ScreenHeight() - 235/*photo gallery + button heights*/ - collectionView.contentInset.top*3 - Sizing.statusBarHeight - Sizing.tabBarHeight - Sizing.navBarHeight)/2
         return CGSize(width: (Sizing.ScreenWidth() - 16/*border*/ - 6/*intercell*/)/2 , height: height)
     }

@@ -19,6 +19,9 @@ public class UserManager
     public static var wallet = [Discount]()
     public static var walletIDs = [Int64]()
     
+    
+    public static let test_reset_user_id_on_load = false
+    
     public static func Initialize()
     {
         DiscountManager.didLoadDiscounts.addHandler {
@@ -40,7 +43,10 @@ public class UserManager
         let ud = UserDefaults.standard
         
         //test
-        ud.removeObject(forKey: "user_id")
+        if test_reset_user_id_on_load
+        {
+            ud.removeObject(forKey: "user_id")
+        }
         
         if let user_id = ud.value(forKey: "user_id") as? String
         {

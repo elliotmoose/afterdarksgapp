@@ -14,5 +14,6 @@ public class MainManager
     {
         BarManager.Initialize()
         DiscountManager.Initialize()
+        ImageManager.Initialize()
     }
 }

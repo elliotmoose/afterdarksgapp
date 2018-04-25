@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import UIKit
 
 public class Discount
 {
@@ -18,6 +19,8 @@ public class Discount
 
     var curAvailCount : Int = 0
     var maxAvailCount : Int = 0
+    
+    var image : UIImage?
     
     init(dict : NSDictionary)
     {
