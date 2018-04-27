@@ -37,11 +37,11 @@ class BarDetailViewController: UIViewController,UICollectionViewDelegate,UIColle
         
         
         //image gradient layer
-//        let gradientMaskLayer = CAGradientLayer()
-//        gradientMaskLayer.frame = imageView.frame
-//        gradientMaskLayer.colors = [UIColor.black.cgColor,UIColor.clear.cgColor]
-//        gradientMaskLayer.locations = [0,1]
-//        imageView.layer.mask = gradientMaskLayer
+        let gradientMaskLayer = CAGradientLayer()
+        gradientMaskLayer.frame = CGRect(x: 0, y: 0, width: Sizing.ScreenWidth(), height: imageView.frame.height)
+        gradientMaskLayer.colors = [UIColor.black.cgColor,UIColor.clear.cgColor]
+        gradientMaskLayer.locations = [0.5,1]
+        imageView.layer.mask = gradientMaskLayer
     }
     
     required init?(coder aDecoder: NSCoder) {
