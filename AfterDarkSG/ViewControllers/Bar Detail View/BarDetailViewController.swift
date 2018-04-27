@@ -13,9 +13,11 @@ class BarDetailViewController: UIViewController,UICollectionViewDelegate,UIColle
     public static let singleton = BarDetailViewController(nibName: "BarDetailViewController", bundle: Bundle.main)
     
     
+    @IBOutlet weak var barNameLabel: UILabel!
     @IBOutlet weak var discountTabButton: UIButton!
     @IBOutlet weak var aboutTabButton: UIButton!
     @IBOutlet weak var aboutTextView: UITextView!
+    @IBOutlet weak var imageView: UIImageView!
     
     @IBOutlet weak var collectionView: UICollectionView!
     
@@ -32,6 +34,14 @@ class BarDetailViewController: UIViewController,UICollectionViewDelegate,UIColle
         DiscountManager.didLoadDiscounts.addHandler {
             self.ReloadData()
         }
+        
+        
+        //image gradient layer
+//        let gradientMaskLayer = CAGradientLayer()
+//        gradientMaskLayer.frame = imageView.frame
+//        gradientMaskLayer.colors = [UIColor.black.cgColor,UIColor.clear.cgColor]
+//        gradientMaskLayer.locations = [0,1]
+//        imageView.layer.mask = gradientMaskLayer
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -75,9 +85,10 @@ class BarDetailViewController: UIViewController,UICollectionViewDelegate,UIColle
     public func DisplayBar(_ bar : Bar)
     {
         self.title = bar.name
+        barNameLabel.text = bar.name
         
         aboutTextView.text = bar.about
-        
+        imageView.image = bar.GetDisplayImage()
         displayedBar = bar
         
         ReloadData()
