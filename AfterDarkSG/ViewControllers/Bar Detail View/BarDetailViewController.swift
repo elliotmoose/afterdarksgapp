@@ -17,6 +17,7 @@ class BarDetailViewController: UIViewController,UICollectionViewDelegate,UIColle
     @IBOutlet weak var discountTabButton: UIButton!
     @IBOutlet weak var aboutTabButton: UIButton!
     @IBOutlet weak var aboutTextView: UITextView!
+    @IBOutlet weak var imageContainerView: UIView!
     @IBOutlet weak var imageView: UIImageView!
     
     @IBOutlet weak var collectionView: UICollectionView!
@@ -40,8 +41,10 @@ class BarDetailViewController: UIViewController,UICollectionViewDelegate,UIColle
         let gradientMaskLayer = CAGradientLayer()
         gradientMaskLayer.frame = CGRect(x: 0, y: 0, width: Sizing.ScreenWidth(), height: imageView.frame.height)
         gradientMaskLayer.colors = [UIColor.black.cgColor,UIColor.clear.cgColor]
-        gradientMaskLayer.locations = [0.5,1]
+        gradientMaskLayer.locations = [0.4,1]
         imageView.layer.mask = gradientMaskLayer
+        
+
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -84,11 +87,13 @@ class BarDetailViewController: UIViewController,UICollectionViewDelegate,UIColle
     
     public func DisplayBar(_ bar : Bar)
     {
-        self.title = bar.name
+        //self.title = bar.name
         barNameLabel.text = bar.name
         
         aboutTextView.text = bar.about
+        
         imageView.image = bar.GetDisplayImage()
+    
         displayedBar = bar
         
         ReloadData()

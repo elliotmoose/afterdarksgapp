@@ -166,6 +166,33 @@ public class Bar : NSObject{
         }
     }
     
+    public func ShouldBeResult(withQuery : String) -> Int //0 = no, 1 = low priorirty, 2 = high priority, 3 = highest priority
+    {
+        let query = withQuery.lowercased()
+        if name.lowercased().contains(query)
+        {
+            return 3
+        }
+        
+        if address_full.lowercased().contains(query) || address_summary.lowercased().contains(query)
+        {
+            return 2
+        }
+        
+        for discount in discounts
+        {
+            if let name=discount.name, let detail=discount.details
+            {
+                if name.lowercased().contains(query) || detail.lowercased().contains(query)
+                {
+                    return 1
+                }
+            }
+        }
+        
+        return 0
+    }
+    
     
 //
 //    

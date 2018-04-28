@@ -8,11 +8,14 @@
 
 import UIKit
 
-class BarsViewController: UIViewController,UITableViewDelegate,UITableViewDataSource {
+class BarsViewController: UIViewController,UITableViewDelegate,UITableViewDataSource,UISearchBarDelegate {
 
     public static var singleton : BarsViewController? = nil
     
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var searchBar: UISearchBar!
+    
+    var searchResults = [Bar]()
     
     override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
         super.init(nibName: "BarsViewController", bundle: Bundle.main)
@@ -44,6 +47,15 @@ class BarsViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
         ImageManager.didLoadABarImage.addHandler { (bar_id) in
             self.ReloadData()
         }
+        
+        
+        //middle top navigation item
+        let banner_imageView = UIImageView(image: #imageLiteral(resourceName: "AfterDark Logo (White) no subtitle"))
+        banner_imageView.contentMode = .scaleAspectFit
+        self.navigationItem.titleView = banner_imageView
+        
+        //search bar
+        searchBar.delegate = self
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -64,6 +76,7 @@ class BarsViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
     {
         DispatchQueue.main.async {
             self.tableView.reloadData()
+            self.tableView.contentOffset = CGPoint(x: 0, y: 0)
         }
     }
     
@@ -72,7 +85,14 @@ class BarsViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return BarManager.GetList().count
+        if searchBar.text == ""
+        {
+            return BarManager.GetList().count
+        }
+        else
+        {
+            return searchResults.count
+        }
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -83,10 +103,24 @@ class BarsViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
             cell = BarTableViewCell()
         }
         
-        if let bar = BarManager.BarAtIndex(indexPath.row)
+        var barToDisplay = Bar();
+        
+        if searchBar.text == "" //if searching
         {
-            cell?.DisplayBar(bar)
+            if let bar = BarManager.BarAtIndex(indexPath.row)
+            {
+                barToDisplay = bar
+            }
         }
+        else
+        {
+            if indexPath.row >= 0 && indexPath.row < searchResults.count
+            {
+                barToDisplay = searchResults[indexPath.row]
+            }
+        }
+
+        cell?.DisplayBar(barToDisplay)
         
         return cell!
     }
@@ -108,5 +142,44 @@ class BarsViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
     //delegate method
     func DidLoadBars() {
         ReloadData()
+    }
+    
+    func searchBarTextDidEndEditing(_ searchBar: UISearchBar) {
+        
+    }
+    
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        searchResults.removeAll()
+        
+        var highest_priority_result = [Bar]()
+        var high_priority_result = [Bar]()
+        var low_priority_result = [Bar]()
+        
+        if let search = searchBar.text?.lowercased()
+        {
+            for bar in BarManager.GetList()
+            {
+                switch bar.ShouldBeResult(withQuery: search)
+                {
+                case 1: low_priority_result.append(bar)
+                case 2: high_priority_result.append(bar)
+                case 3: highest_priority_result.append(bar)
+                default: continue;
+                }
+            }
+            
+            searchResults = highest_priority_result + high_priority_result + low_priority_result
+        }
+        else
+        {
+            
+        }
+        
+        
+        self.ReloadData()
+    }
+    
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        searchBar.endEditing(true)
     }
 }

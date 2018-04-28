@@ -84,28 +84,37 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="L3L-9e-hFW">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="554"/>
+                                <rect key="frame" x="0.0" y="56" width="375" height="498"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </tableView>
+                            <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="ow1-Un-TOe">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="56"/>
+                                <color key="barTintColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                <textInputTraits key="textInputTraits" returnKeyType="search"/>
+                            </searchBar>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="ow1-Un-TOe" firstAttribute="top" secondItem="Oza-1H-0Jo" secondAttribute="top" id="4Qy-7t-FsM"/>
                             <constraint firstItem="Oza-1H-0Jo" firstAttribute="trailing" secondItem="L3L-9e-hFW" secondAttribute="trailing" id="4qv-PI-psT"/>
-                            <constraint firstItem="L3L-9e-hFW" firstAttribute="top" secondItem="Oza-1H-0Jo" secondAttribute="top" id="5TD-dg-g0N"/>
                             <constraint firstItem="L3L-9e-hFW" firstAttribute="leading" secondItem="Oza-1H-0Jo" secondAttribute="leading" id="8FZ-AX-BRV"/>
+                            <constraint firstItem="ow1-Un-TOe" firstAttribute="leading" secondItem="Oza-1H-0Jo" secondAttribute="leading" id="KPs-cF-QPH"/>
+                            <constraint firstItem="L3L-9e-hFW" firstAttribute="top" secondItem="ow1-Un-TOe" secondAttribute="bottom" id="Rbu-aY-Vem"/>
                             <constraint firstItem="Oza-1H-0Jo" firstAttribute="bottom" secondItem="L3L-9e-hFW" secondAttribute="bottom" id="Z8g-54-gWc"/>
+                            <constraint firstItem="ow1-Un-TOe" firstAttribute="trailing" secondItem="Oza-1H-0Jo" secondAttribute="trailing" id="mYS-Ju-NbF"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Oza-1H-0Jo"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="Item" id="bj1-8J-k1H"/>
                     <navigationItem key="navigationItem" id="TIP-zT-egU"/>
                     <connections>
+                        <outlet property="searchBar" destination="ow1-Un-TOe" id="dPs-dU-1Ad"/>
                         <outlet property="tableView" destination="L3L-9e-hFW" id="H6I-cF-vvf"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="AQn-Ph-8c4" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1535" y="-457"/>
+            <point key="canvasLocation" x="1533.5999999999999" y="-457.42128935532236"/>
         </scene>
         <!--My Wallet-->
         <scene sceneID="wpz-U7-o8Y">
@@ -118,7 +127,7 @@
                         <color key="backgroundColor" red="0.62" green="0.49165999999999999" blue="0.19220000000000001" alpha="1" colorSpace="calibratedRGB"/>
                         <color key="barTintColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                         <textAttributes key="titleTextAttributes">
-                            <fontDescription key="fontDescription" name="AvenirNextCondensed-Medium" family="Avenir Next Condensed" pointSize="20"/>
+                            <fontDescription key="fontDescription" name="AvenirNextCondensed-Medium" family="Avenir Next Condensed" pointSize="31"/>
                             <color key="textColor" red="0.62" green="0.49165999999999999" blue="0.19220000000000001" alpha="1" colorSpace="calibratedRGB"/>
                         </textAttributes>
                     </navigationBar>
@@ -130,7 +139,7 @@
             </objects>
             <point key="canvasLocation" x="921" y="959"/>
         </scene>
-        <!--Wallet View Controller-->
+        <!--My Wallet-->
         <scene sceneID="QZf-qD-NfU">
             <objects>
                 <viewController id="H9V-s1-8Hm" customClass="WalletViewController" customModule="AfterDarkSG" customModuleProvider="target" sceneMemberID="viewController">
@@ -177,7 +186,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="joz-Kc-Puw"/>
                     </view>
-                    <navigationItem key="navigationItem" id="fBx-Rg-gV0"/>
+                    <navigationItem key="navigationItem" title="My Wallet" id="fBx-Rg-gV0"/>
                     <connections>
                         <outlet property="collectionView" destination="pTo-H5-20g" id="mxz-4J-snP"/>
                         <outlet property="walletCountLabel" destination="Upu-Kd-WSC" id="ctW-gq-U3p"/>

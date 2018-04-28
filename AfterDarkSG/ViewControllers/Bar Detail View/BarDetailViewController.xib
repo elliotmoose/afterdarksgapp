@@ -12,6 +12,7 @@
     <customFonts key="customFonts">
         <array key="AvenirNextCondensed.ttc">
             <string>AvenirNextCondensed-Bold</string>
+            <string>AvenirNextCondensed-Medium</string>
         </array>
     </customFonts>
     <objects>
@@ -22,6 +23,7 @@
                 <outlet property="barNameLabel" destination="MLY-Dx-xCs" id="EQ9-ks-7X5"/>
                 <outlet property="collectionView" destination="7K8-i1-CF7" id="Pjl-c1-a7w"/>
                 <outlet property="discountTabButton" destination="n8s-bD-dId" id="DSb-Nn-eCV"/>
+                <outlet property="imageContainerView" destination="EtI-QV-eUH" id="3Lq-M6-WSK"/>
                 <outlet property="imageView" destination="ftK-9o-RUv" id="bNF-Fa-F1s"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
@@ -37,7 +39,7 @@
                     <constraints>
                         <constraint firstAttribute="height" constant="40" id="LL0-nO-xm8"/>
                     </constraints>
-                    <fontDescription key="fontDescription" name="AvenirNextCondensed-Bold" family="Avenir Next Condensed" pointSize="16"/>
+                    <fontDescription key="fontDescription" name="AvenirNextCondensed-Medium" family="Avenir Next Condensed" pointSize="16"/>
                     <state key="normal" title="Afterdark Specials">
                         <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
@@ -48,7 +50,7 @@
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8Jo-yl-82C">
                     <rect key="frame" x="187.5" y="220" width="187.5" height="40"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    <fontDescription key="fontDescription" name="AvenirNextCondensed-Bold" family="Avenir Next Condensed" pointSize="16"/>
+                    <fontDescription key="fontDescription" name="AvenirNextCondensed-Medium" family="Avenir Next Condensed" pointSize="16"/>
                     <state key="normal" title="About Us">
                         <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
@@ -97,16 +99,16 @@
                             <rect key="frame" x="0.0" y="0.0" width="375" height="200"/>
                         </imageView>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="NAME OF BAR" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MLY-Dx-xCs">
-                            <rect key="frame" x="32" y="145.5" width="311" height="46.5"/>
+                            <rect key="frame" x="32" y="137.5" width="311" height="46.5"/>
                             <fontDescription key="fontDescription" name="AvenirNextCondensed-Bold" family="Avenir Next Condensed" pointSize="34"/>
                             <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <nil key="highlightedColor"/>
                         </label>
                     </subviews>
-                    <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                    <color key="backgroundColor" red="0.090440538194444448" green="0.090440538194444448" blue="0.090440538194444448" alpha="1" colorSpace="calibratedRGB"/>
                     <constraints>
                         <constraint firstItem="MLY-Dx-xCs" firstAttribute="leading" secondItem="EtI-QV-eUH" secondAttribute="leading" constant="32" id="9fg-Y3-ZoT"/>
-                        <constraint firstAttribute="bottom" secondItem="MLY-Dx-xCs" secondAttribute="bottom" constant="8" id="TM8-eJ-Ik5"/>
+                        <constraint firstAttribute="bottom" secondItem="MLY-Dx-xCs" secondAttribute="bottom" constant="16" id="TM8-eJ-Ik5"/>
                         <constraint firstAttribute="bottom" secondItem="ftK-9o-RUv" secondAttribute="bottom" id="oeO-W8-u5n"/>
                         <constraint firstItem="MLY-Dx-xCs" firstAttribute="centerX" secondItem="EtI-QV-eUH" secondAttribute="centerX" id="ojb-PE-DVo"/>
                         <constraint firstAttribute="trailing" secondItem="ftK-9o-RUv" secondAttribute="trailing" id="rGK-97-epF"/>
