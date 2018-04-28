@@ -43,7 +43,7 @@ class SetupViewController: UIViewController {
         }
         
         UserManager.didFailConnect.addHandler {
-            PopupManager.singleton.Popup(title: "Connection Error", body: "Could not connect to server. \n Please check your connection and try again", presentationViewCont: self)
+            PopupManager.singleton.ConnectionErrorPopup(self)
             
             DispatchQueue.main.async {
                 self.tryAgainButton.alpha = 1

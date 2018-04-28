@@ -105,4 +105,9 @@ extension NSError{
     convenience init(_ string : String) {
         self.init(domain: string, code: 101, userInfo: nil)
     }
+    
+    public func ToString() -> String
+    {
+        return domain
+    }
 }

@@ -25,7 +25,7 @@ class DiscountDetailViewController: UIViewController {
     @IBOutlet weak var textView: UITextView!
     
     var addressDetailDisplayed = false
-    
+    var selectedDiscount : Discount?
     
     override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
         super.init(nibName: "DiscountDetailViewController", bundle: Bundle.main)
@@ -53,6 +53,8 @@ class DiscountDetailViewController: UIViewController {
     
     public func DisplayDiscount(_ discount : Discount)
     {
+        selectedDiscount = discount
+        
         amountLabel.text = discount.amount
         discountNameLabel.text = discount.name
         
@@ -88,7 +90,8 @@ class DiscountDetailViewController: UIViewController {
     }
     
     @IBAction func claimButtonPressed(_ sender: Any) {
-        
+        PasscodeViewController.singleton.selectedDiscountID = selectedDiscount?.ID
+        navigationController?.pushViewController(PasscodeViewController.singleton, animated: true)
     }
     
 

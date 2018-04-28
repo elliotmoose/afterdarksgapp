@@ -86,4 +86,60 @@ public class DiscountManager
         
         return output
     }
+    
+    public static func AddToWallet(discountID : Int)
+    {
+        
+    }
+    
+    public static func Claim(discountID : Int, passcode : String, _ callback : @escaping (Bool,String)-> Void)
+    {
+        
+        do
+        {
+            guard let user_id = UserManager.user_id else {throw NSError("No User ID")}
+            guard let discount = GetDiscountWithID(discountID) else {throw NSError("Discount with id \(discountID) does not exist")}
+            guard let barID = discount.bar_ID else {throw NSError("No bar ID")}
+            guard let bar = BarManager.BarWithID(barID) else{throw NSError("No Bar with ID")}
+            guard bar.passcode == passcode else {throw NSError("Wrong Passcode")}
+            
+            let url = Network.domain + "AddDiscountClaim"
+            let postParam = "user_id=\(user_id)&discount_id=\(discountID)"
+            
+            Network.singleton.DataFromUrlWithPost(url, postParam: postParam) {
+                (success, output) -> Void in
+                
+                do
+                {
+                    guard success else {throw NSError("Connect Error")}
+                    guard let output = output, let dict = try JSONSerialization.jsonObject(with: output, options: .allowFragments) as? NSDictionary, let succ = dict["success"] as? String else {throw NSError("Invalid server response")}
+                    
+                    if succ == "true"
+                    {
+                        callback(true,"discount claimed")
+                    }
+                    else
+                    {
+                        if let detail = dict["output"] as? String
+                        {
+                            NSLog(detail)
+                            callback(false,detail)
+                        }
+                        
+                    }
+                }
+                catch let error as NSError
+                {
+                    NSLog(error.domain)
+                    callback(false,error.domain)
+                }
+            }
+        }
+        catch let e as NSError
+        {
+            NSLog(e.domain)
+            callback(false,e.domain)
+
+        }
+    }
 }

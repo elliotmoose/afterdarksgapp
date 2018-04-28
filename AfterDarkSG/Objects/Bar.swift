@@ -24,6 +24,9 @@ public class Bar : NSObject{
     var totalReviewCount = 0
 
     
+    //discount claim
+    var passcode = ""
+    
     
     //rating
     
@@ -102,12 +105,16 @@ public class Bar : NSObject{
             self.address_full = address_full
         }
 
-
-        else if let ratingCount = dict["ratingCount"] as? Int
+        if let passcode = dict["passcode"] as? String
         {
-            self.totalReviewCount = ratingCount
+            self.passcode = passcode
         }
-      
+//
+//        else if let ratingCount = dict["ratingCount"] as? Int
+//        {
+//            self.totalReviewCount = ratingCount
+//        }
+//
         if errors.count != 0
         {
             NSLog(errors.joined(separator: "\n"))

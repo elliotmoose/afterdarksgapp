@@ -85,6 +85,11 @@ class PopupManager{
         }
     }
     
+    func ConnectionErrorPopup(_ vc : UIViewController)
+    {
+        PopupManager.singleton.Popup(title: "Connection Error", body: "Could not connect to server. \n Please check your connection and try again", presentationViewCont: vc)
+    }
+    
     func GlobalPopup(title: String, body : String)
     {
         DispatchQueue.main.async {
