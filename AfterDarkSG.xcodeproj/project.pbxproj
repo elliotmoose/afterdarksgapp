@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		A42846852094AD100066ED95 /* PasscodeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A42846842094ACDC0066ED95 /* PasscodeViewController.swift */; };
 		A42846862094AD150066ED95 /* PasscodeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A42846832094ACDC0066ED95 /* PasscodeViewController.xib */; };
+		A428468920997FC90066ED95 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A428468820997FC90066ED95 /* SettingsViewController.swift */; };
 		A43142AA2089AC0A0081BA80 /* DiscountDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A43142A82089AC0A0081BA80 /* DiscountDetailViewController.swift */; };
 		A43142AB2089AC0A0081BA80 /* DiscountDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A43142A92089AC0A0081BA80 /* DiscountDetailViewController.xib */; };
 		A43142AD2089AD9C0081BA80 /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = A43142AC2089AD9C0081BA80 /* Event.swift */; };
@@ -60,6 +61,7 @@
 /* Begin PBXFileReference section */
 		A42846832094ACDC0066ED95 /* PasscodeViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PasscodeViewController.xib; sourceTree = "<group>"; };
 		A42846842094ACDC0066ED95 /* PasscodeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasscodeViewController.swift; sourceTree = "<group>"; };
+		A428468820997FC90066ED95 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		A43142A82089AC0A0081BA80 /* DiscountDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiscountDetailViewController.swift; sourceTree = "<group>"; };
 		A43142A92089AC0A0081BA80 /* DiscountDetailViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DiscountDetailViewController.xib; sourceTree = "<group>"; };
 		A43142AC2089AD9C0081BA80 /* Event.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Event.swift; sourceTree = "<group>"; };
@@ -133,6 +135,14 @@
 			path = "Claim View";
 			sourceTree = "<group>";
 		};
+		A428468720997FAB0066ED95 /* Settings View */ = {
+			isa = PBXGroup;
+			children = (
+				A428468820997FC90066ED95 /* SettingsViewController.swift */,
+			);
+			path = "Settings View";
+			sourceTree = "<group>";
+		};
 		A4E0DD27208828CA00B7348C = {
 			isa = PBXGroup;
 			children = (
@@ -198,6 +208,7 @@
 				A4E0DD7420887C5F00B7348C /* Bar Detail View */,
 				A4FC207D208F81AC00753BB7 /* Discounts View */,
 				A4FC207C208F819C00753BB7 /* Wallet View */,
+				A428468720997FAB0066ED95 /* Settings View */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -434,6 +445,7 @@
 				A4E0DD53208876B200B7348C /* BarsViewController.swift in Sources */,
 				A4FC2079208F1ADF00753BB7 /* CircleProgressView.swift in Sources */,
 				A42846852094AD100066ED95 /* PasscodeViewController.swift in Sources */,
+				A428468920997FC90066ED95 /* SettingsViewController.swift in Sources */,
 				A4E0DD4C2088722B00B7348C /* BarManager.swift in Sources */,
 				A4E0DD572088778900B7348C /* BarTableViewCell.swift in Sources */,
 			);
