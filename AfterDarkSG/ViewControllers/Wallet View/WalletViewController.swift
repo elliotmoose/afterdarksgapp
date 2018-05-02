@@ -24,10 +24,8 @@ class WalletViewController: UIViewController,UICollectionViewDelegate,UICollecti
     }
     
     override func viewDidAppear(_ animated: Bool) {
-        if collectionView.indexPathsForVisibleItems.count == 0
-        {
-            ReloadData()
-        }
+        ReloadData()
+
     }
     
     override func viewDidLoad() {
@@ -38,6 +36,10 @@ class WalletViewController: UIViewController,UICollectionViewDelegate,UICollecti
         collectionView.register(UINib(nibName: "DiscountCollectionViewCell", bundle: Bundle.main), forCellWithReuseIdentifier: "DiscountCollectionViewCell")
         
         DiscountManager.didLoadDiscounts.addHandler {
+            self.ReloadData()
+        }
+        
+        UserManager.didUpdateWallet.addHandler {
             self.ReloadData()
         }
     }
@@ -58,7 +60,7 @@ class WalletViewController: UIViewController,UICollectionViewDelegate,UICollecti
         
         if indexPath.row >= 0 && indexPath.row < UserManager.wallet.count
         {
-            cell.DisplayDiscount(UserManager.wallet[indexPath.row])
+            cell.DisplayDiscount(UserManager.wallet[indexPath.row],mode: .wallet)
 //
 //
 //            var index = indexPath.row
@@ -79,12 +81,11 @@ class WalletViewController: UIViewController,UICollectionViewDelegate,UICollecti
         if indexPath.row >= 0 && indexPath.row < UserManager.wallet.count
         {
             let discount = UserManager.wallet[indexPath.row]
-            
-            if discount.curAvailCount != 0
-            {
-                DiscountDetailViewController.singleton.DisplayDiscount(discount)
-                self.navigationController?.pushViewController(DiscountDetailViewController.singleton, animated: true)
-            }
+
+            let discountDetailViewCont = DiscountDetailViewController(nibName: "DiscountDetailViewController", bundle: Bundle.main)
+            discountDetailViewCont.SetMode(.wallet)
+            discountDetailViewCont.DisplayDiscount(discount)
+            self.navigationController?.pushViewController(discountDetailViewCont, animated: true)
         }
     }
     

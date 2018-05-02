@@ -125,6 +125,10 @@ public class DiscountManager
                             NSLog(detail)
                             callback(false,detail)
                         }
+                        else
+                        {
+                            callback(false,"No details")
+                        }
                         
                     }
                 }
@@ -140,6 +144,59 @@ public class DiscountManager
             NSLog(e.domain)
             callback(false,e.domain)
 
+        }
+    }
+    
+    public static func AddToWallet(discountID : Int,_ callback : @escaping (Bool,String)-> Void)
+    {
+        do
+        {
+            guard let user_id = UserManager.user_id else {throw NSError("No User ID")}
+            guard let discount = GetDiscountWithID(discountID) else {throw NSError("Discount with id \(discountID) does not exist")}
+            
+            let url = Network.domain + "AddDiscountToWalletForUser"
+            let postParam = "user_id=\(user_id)&discount_id=\(discountID)"
+            
+            Network.singleton.DataFromUrlWithPost(url, postParam: postParam) {
+                (success, output) -> Void in
+                
+                do
+                {
+                    guard success else {throw NSError("Connect Error")}
+                    guard let output = output, let dict = try JSONSerialization.jsonObject(with: output, options: .allowFragments) as? NSDictionary, let succ = dict["success"] as? String else {throw NSError("Invalid server response")}
+                    
+                    if succ == "true"
+                    {
+                        guard let responseArray = dict["output"] as? [Int64] else {throw NSError("Invalid Response - array");}
+                        UserManager.SetWallet(walletIDs: responseArray)
+                        discount.curAvailCount = discount.curAvailCount-1 //artificially change this
+                        callback(true,"discount added")
+                    }
+                    else
+                    {
+                        if let detail = dict["output"] as? String
+                        {
+                            NSLog(detail)
+                            callback(false,detail)
+                        }
+                        else
+                        {
+                            callback(false,"No details")
+                        }
+                    }
+                }
+                catch let error as NSError
+                {
+                    NSLog(error.domain)
+                    callback(false,error.domain)
+                }
+            }
+        }
+        catch let e as NSError
+        {
+            NSLog(e.domain)
+            callback(false,e.domain)
+            
         }
     }
 }

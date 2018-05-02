@@ -23,6 +23,7 @@
                 <outlet property="addressSummaryLabel" destination="Jze-Z0-HmR" id="V0n-m1-n97"/>
                 <outlet property="amountLabel" destination="sr2-xY-BgU" id="L8Z-Vy-n0G"/>
                 <outlet property="barNameLabel" destination="VuY-Vk-S4D" id="qfi-dc-72F"/>
+                <outlet property="claimButton" destination="sIc-Fn-sQX" id="Hvj-mj-rpa"/>
                 <outlet property="discountNameLabel" destination="LtQ-Gq-hxX" id="2gi-Kv-l5j"/>
                 <outlet property="imageContainerView" destination="nLh-7J-OJP" id="wU7-v3-WfZ"/>
                 <outlet property="imageView" destination="o6d-Bs-P9I" id="9SA-v4-R7C"/>

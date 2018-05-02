@@ -235,6 +235,7 @@ class PasscodeViewController: UIViewController,UIKeyInput{
             if success
             {
                 PopupManager.singleton.Popup(title: "Success!", body: "Discount validated! \n Enjoy:)", presentationViewCont: self){
+                    UserManager.LoadWallet()
                     self.Dismiss()
                 }
             }
@@ -251,6 +252,9 @@ class PasscodeViewController: UIViewController,UIKeyInput{
                 else
                 {
                     PopupManager.singleton.Popup(title: "Failed :(", body: "There seems to be an issue.. Please try again later", presentationViewCont: self)
+                    {
+                        self.Dismiss()
+                    }
                 }
             }
         })

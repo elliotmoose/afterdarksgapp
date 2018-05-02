@@ -23,10 +23,7 @@ class DiscountsViewController: UIViewController,UICollectionViewDelegate,UIColle
     }
     
     override func viewDidAppear(_ animated: Bool) {
-        if collectionView.indexPathsForVisibleItems.count == 0
-        {
-            ReloadData()
-        }
+        ReloadData()
     }
     
     override func viewDidLoad() {
@@ -54,7 +51,7 @@ class DiscountsViewController: UIViewController,UICollectionViewDelegate,UIColle
         
         if indexPath.row >= 0 && indexPath.row < DiscountManager.GetDiscounts().count
         {
-            cell.DisplayDiscount(DiscountManager.GetDiscounts()[indexPath.row])
+            cell.DisplayDiscount(DiscountManager.GetDiscounts()[indexPath.row],mode: .windowShop)
         }
         
         return cell
@@ -68,17 +65,15 @@ class DiscountsViewController: UIViewController,UICollectionViewDelegate,UIColle
             
             if discount.curAvailCount != 0
             {
-                DiscountDetailViewController.singleton.DisplayDiscount(discount)
-                self.navigationController?.pushViewController(DiscountDetailViewController.singleton, animated: true)
+                let discountDetailViewCont = DiscountDetailViewController(nibName: "DiscountDetailViewController", bundle: Bundle.main)
+                discountDetailViewCont.SetMode(.windowShop)
+                discountDetailViewCont.DisplayDiscount(discount)
+                self.navigationController?.pushViewController(discountDetailViewCont, animated: true)
             }
         }
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        
-        
-        
-        
         let height = (Sizing.ScreenHeight() - 235/*photo gallery + button heights*/ - collectionView.contentInset.top*3 - Sizing.statusBarHeight - Sizing.tabBarHeight - Sizing.navBarHeight)/2
         return CGSize(width: (Sizing.ScreenWidth() - 16/*border*/ - 6/*intercell*/)/2 , height: height)
     }

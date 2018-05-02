@@ -12,10 +12,14 @@ import UIKit
 public class UserManager
 {
     public static var user_id : String?
+    
+    //Events
     public static let didInitNewUser = Event()
     public static let userCreatedBefore = Event()
     public static let didFailInitNewUser = Event()
     public static let didFailConnect = Event()
+    public static let didUpdateWallet = Event()
+    
     public static var wallet = [Discount]()
     public static var walletIDs = [Int64]()
     
@@ -186,8 +190,7 @@ public class UserManager
                 if requestSuccess == "true"
                 {
                     guard let responseArray = response["output"] as? [Int64] else {throw NSError("Invalid Response - array");}
-                    self.walletIDs = responseArray
-                    self.PopuplateWalletFromString()
+                    SetWallet(walletIDs: responseArray)
                     return
                 }
                 else if let requestOutputString = response["output"] as? String
@@ -202,7 +205,13 @@ public class UserManager
         }
     }
     
-    public static func PopuplateWalletFromString()
+    public static func SetWallet(walletIDs: [Int64])
+    {
+        self.walletIDs = walletIDs
+        self.PopuplateWalletFromString()
+    }
+    
+    private static func PopuplateWalletFromString()
     {
         guard DiscountManager.GetDiscounts().count > 0 else {NSLog("Discounts likely not loaded yet");return;}
         guard walletIDs.count > 0 else {NSLog("Wallet likely not loaded yet");return;}
@@ -215,6 +224,8 @@ public class UserManager
                 wallet.append(discount)
             }
         }
+        
+        didUpdateWallet.raise()
     }
 }
 

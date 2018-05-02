@@ -120,7 +120,7 @@ class BarDetailViewController: UIViewController,UICollectionViewDelegate,UIColle
         
         if let discount = displayedBar?.DiscountAtIndex(indexPath.row)
         {
-            cell.DisplayDiscount(discount)
+            cell.DisplayDiscount(discount,mode: .windowShop)
         }
         
         return cell
@@ -131,8 +131,10 @@ class BarDetailViewController: UIViewController,UICollectionViewDelegate,UIColle
         {
             if discount.curAvailCount != 0
             {
-                DiscountDetailViewController.singleton.DisplayDiscount(discount)
-                self.navigationController?.pushViewController(DiscountDetailViewController.singleton, animated: true)
+                let discountDetailViewCont = DiscountDetailViewController(nibName: "DiscountDetailViewController", bundle: Bundle.main)
+                discountDetailViewCont.SetMode(.windowShop)
+                discountDetailViewCont.DisplayDiscount(discount)
+                self.navigationController?.pushViewController(discountDetailViewCont, animated: true)
             }
         }
     }

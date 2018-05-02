@@ -8,8 +8,14 @@
 
 import UIKit
 
+public enum DiscountDetailDisplayMode
+{
+    case windowShop
+    case wallet
+}
+
 class DiscountDetailViewController: UIViewController {
-    public static let singleton = DiscountDetailViewController(nibName: "DiscountDetailViewController", bundle: Bundle.main)
+    //public static let singleton = DiscountDetailViewController(nibName: "DiscountDetailViewController", bundle: Bundle.main)
 
     @IBOutlet weak var addressDetailTopConstraint: NSLayoutConstraint!
     
@@ -23,10 +29,11 @@ class DiscountDetailViewController: UIViewController {
     @IBOutlet weak var nameButton: UIButton!
     @IBOutlet weak var addressDetailLabel: UILabel!
     @IBOutlet weak var textView: UITextView!
+    @IBOutlet weak var claimButton: UIButton!
     
     var addressDetailDisplayed = false
     var selectedDiscount : Discount?
-    
+    var mode : DiscountDetailDisplayMode = DiscountDetailDisplayMode.wallet
     override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
         super.init(nibName: "DiscountDetailViewController", bundle: Bundle.main)
         Bundle.main.loadNibNamed("DiscountDetailViewController", owner: self, options: nil)
@@ -45,10 +52,41 @@ class DiscountDetailViewController: UIViewController {
         Reset()
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        //check if user owns this discount
+        let hasDiscount = DiscountManager.GetDiscounts().contains { (discount) -> Bool in
+            
+            if discount.ID == nil
+            {
+                return false
+            }
+            return discount.ID == selectedDiscount?.ID
+        }
+        
+        if !hasDiscount
+        {
+            self.Dismiss()
+        }
+    }
+    
     public func Reset()
     {
         addressDetailDisplayed = false
         SetDisplayDetailAddress(false)
+    }
+    
+    func SetMode(_ mode : DiscountDetailDisplayMode)
+    {
+        if mode == .wallet
+        {
+            claimButton.setTitle("Claim Now", for: .normal)
+        }
+        else
+        {
+            claimButton.setTitle("Add To Wallet", for: .normal)
+        }
+        
+        self.mode = mode
     }
     
     public func DisplayDiscount(_ discount : Discount)
@@ -90,9 +128,37 @@ class DiscountDetailViewController: UIViewController {
     }
     
     @IBAction func claimButtonPressed(_ sender: Any) {
-        PasscodeViewController.singleton.selectedDiscountID = selectedDiscount?.ID
-        navigationController?.pushViewController(PasscodeViewController.singleton, animated: true)
+        
+        if mode == .wallet
+        {
+            PasscodeViewController.singleton.selectedDiscountID = selectedDiscount?.ID
+            navigationController?.pushViewController(PasscodeViewController.singleton, animated: true)
+        }
+        else
+        {
+            if let id = selectedDiscount?.ID
+            {
+                DiscountManager.AddToWallet(discountID: id)
+                {
+                    success,output in
+                    
+                    if success
+                    {
+                        PopupManager.singleton.Popup(title: "Done!", body: "The discount has been added to your wallet :)", presentationViewCont: self)
+                    }
+                    else
+                    {
+                        PopupManager.singleton.Popup(title: "Hmm..", body: "There has been an error: " + output, presentationViewCont: self)
+                    }
+                }
+            }
+            else
+            {
+                NSLog("DiscountDetailViewController: no discount id")
+            }
+        }
     }
+    
     
 
     
@@ -109,6 +175,13 @@ class DiscountDetailViewController: UIViewController {
         {
             addressDetailTopConstraint.constant = -nameButton.frame.height
             addressDetailLabel.alpha = 0
+        }
+    }
+    
+    func Dismiss()
+    {
+        DispatchQueue.main.async {
+            let _ = self.navigationController?.popViewController(animated: true)
         }
     }
 }

@@ -29,16 +29,23 @@ class DiscountCollectionViewCell: UICollectionViewCell {
         unavailableLabel.clipsToBounds = true
     }
     
-    public func DisplayDiscount(_ discount : Discount)
+    public func DisplayDiscount(_ discount : Discount, mode: DiscountDetailDisplayMode)
     {
         self.nameLabel.text = discount.name
         self.amountLabel.text = discount.amount
         self.availCountLabel.text = "\(discount.curAvailCount)/\(discount.maxAvailCount)"
         self.imageView.image = discount.image
         
-        if discount.curAvailCount == 0
+        if mode == .windowShop
         {
-            SetAvailable(false)
+            if discount.curAvailCount == 0
+            {
+                SetAvailable(false)
+            }
+            else
+            {
+                SetAvailable(true)
+            }
         }
         else
         {
