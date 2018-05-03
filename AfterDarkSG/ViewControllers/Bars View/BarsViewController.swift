@@ -105,14 +105,14 @@ class BarsViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
         
         var barToDisplay = Bar();
         
-        if searchBar.text == "" //if searching
+        if searchBar.text == "" //if not searching
         {
             if let bar = BarManager.BarAtIndex(indexPath.row)
             {
                 barToDisplay = bar
             }
         }
-        else
+        else //if searching
         {
             if indexPath.row >= 0 && indexPath.row < searchResults.count
             {
@@ -127,7 +127,25 @@ class BarsViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
     
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if let bar = BarManager.BarAtIndex(indexPath.row)
+        
+        var barToDisplay : Bar? = nil
+        
+        if searchBar.text == ""
+        {
+            if let bar = BarManager.BarAtIndex(indexPath.row)
+            {
+                barToDisplay = bar
+            }
+        }
+        else
+        {
+            if indexPath.row >= 0 && indexPath.row < searchResults.count
+            {
+                barToDisplay = searchResults[indexPath.row]
+            }
+        }
+        
+        if let bar = barToDisplay
         {
             BarDetailViewController.singleton.DisplayBar(bar)
             self.navigationController?.pushViewController(BarDetailViewController.singleton, animated: true)
@@ -139,13 +157,20 @@ class BarsViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
         return 200
     }
     
+    func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 200
+    }
+    
+    func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
+        let view = UIView()
+        view.alpha = 0
+        return view
+    }
+
+    
     //delegate method
     func DidLoadBars() {
         ReloadData()
-    }
-    
-    func searchBarTextDidEndEditing(_ searchBar: UISearchBar) {
-        
     }
     
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {

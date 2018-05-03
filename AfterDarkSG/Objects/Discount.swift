@@ -22,6 +22,12 @@ public class Discount
     
     var image : UIImage?
     
+    
+    init()
+    {
+        
+    }
+    
     init(dict : NSDictionary)
     {
         if let discName = dict["name"] as? String
@@ -67,5 +73,25 @@ public class Discount
         self.amount = amount
         self.ID = discountID
         self.bar_ID = bar_ID
+    }
+    
+    public func ShouldBeResult(withQuery: String) -> Int
+    {
+        guard let name = name, let details = details else {return 0;}
+        
+        let query = withQuery.lowercased()
+        if name.lowercased().contains(query)
+        {
+            return 3
+        }
+        
+        if let id = ID, let bar = BarManager.BarWithID(id), bar.name.lowercased().contains(query)
+        {
+            return 2
+        }
+
+        
+        
+        return 0
     }
 }

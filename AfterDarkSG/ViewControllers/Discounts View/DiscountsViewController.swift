@@ -8,9 +8,12 @@
 
 import UIKit
 
-class DiscountsViewController: UIViewController,UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout  {
+class DiscountsViewController: UIViewController,UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout,UISearchBarDelegate  {
     
     @IBOutlet weak var collectionView: UICollectionView!
+    
+    @IBOutlet weak var searchBar: UISearchBar!
+    private var searchResults = [Discount]()
     
     override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
         super.init(nibName: "DiscountsViewController", bundle: Bundle.main)
@@ -33,12 +36,29 @@ class DiscountsViewController: UIViewController,UICollectionViewDelegate,UIColle
         collectionView.dataSource = self
         collectionView.register(UINib(nibName: "DiscountCollectionViewCell", bundle: Bundle.main), forCellWithReuseIdentifier: "DiscountCollectionViewCell")
         
+        
+        
+        //middle top navigation item
+        let banner_imageView = UIImageView(image: #imageLiteral(resourceName: "AfterDark Logo (White) no subtitle"))
+        banner_imageView.contentMode = .scaleAspectFit
+        self.navigationItem.titleView = banner_imageView
+        
+        //search bar
+        searchBar.delegate = self
+        
         DiscountManager.didLoadDiscounts.addHandler {
             self.ReloadData()
         }
     }
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return DiscountManager.GetDiscounts().count
+        if searchBar.text == ""
+        {
+            return DiscountManager.GetDiscounts().count
+        }
+        else
+        {
+            return searchResults.count
+        }
     }
     
     func numberOfSections(in collectionView: UICollectionView) -> Int {
@@ -48,28 +68,57 @@ class DiscountsViewController: UIViewController,UICollectionViewDelegate,UIColle
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "DiscountCollectionViewCell", for: indexPath) as! DiscountCollectionViewCell
         
+        var discountToDisplay = Discount()
         
-        if indexPath.row >= 0 && indexPath.row < DiscountManager.GetDiscounts().count
+        if searchBar.text == "" //if not searching
         {
-            cell.DisplayDiscount(DiscountManager.GetDiscounts()[indexPath.row],mode: .windowShop)
+            if indexPath.row >= 0 && indexPath.row < DiscountManager.GetDiscounts().count
+            {
+                discountToDisplay = DiscountManager.GetDiscounts()[indexPath.row]
+            }
         }
+        else
+        {
+            if indexPath.row >= 0 && indexPath.row < searchResults.count
+            {
+                discountToDisplay = searchResults[indexPath.row]
+            }
+        }
+        
+        cell.DisplayDiscount(discountToDisplay,mode: .windowShop)
         
         return cell
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        
-        if indexPath.row >= 0 && indexPath.row < DiscountManager.GetDiscounts().count
+        var discountToDisplay : Discount? = nil
+
+        if searchBar.text == ""
         {
-            let discount = DiscountManager.GetDiscounts()[indexPath.row]
-            
-            if discount.curAvailCount != 0
+            if indexPath.row >= 0 && indexPath.row < DiscountManager.GetDiscounts().count
             {
-                let discountDetailViewCont = DiscountDetailViewController(nibName: "DiscountDetailViewController", bundle: Bundle.main)
-                discountDetailViewCont.SetMode(.windowShop)
-                discountDetailViewCont.DisplayDiscount(discount)
-                self.navigationController?.pushViewController(discountDetailViewCont, animated: true)
+                let discount = DiscountManager.GetDiscounts()[indexPath.row]
+                
+                if discount.curAvailCount != 0
+                {
+                    discountToDisplay = discount
+                }
             }
+        }
+        else
+        {
+            if indexPath.row >= 0 && indexPath.row < searchResults.count
+            {
+                discountToDisplay = searchResults[indexPath.row]
+            }
+        }
+        
+        if let discount = discountToDisplay
+        {
+            let discountDetailViewCont = DiscountDetailViewController(nibName: "DiscountDetailViewController", bundle: Bundle.main)
+            discountDetailViewCont.SetMode(.windowShop)
+            discountDetailViewCont.DisplayDiscount(discount)
+            self.navigationController?.pushViewController(discountDetailViewCont, animated: true)
         }
     }
     
@@ -80,6 +129,41 @@ class DiscountsViewController: UIViewController,UICollectionViewDelegate,UIColle
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
         return 2
+    }
+    
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        searchResults.removeAll()
+        
+        var highest_priority_result = [Discount]()
+        var high_priority_result = [Discount]()
+        var low_priority_result = [Discount]()
+        
+        if let search = searchBar.text?.lowercased()
+        {
+            for discount in DiscountManager.GetDiscounts()
+            {
+                switch discount.ShouldBeResult(withQuery: search)
+                {
+                case 1: low_priority_result.append(discount)
+                case 2: high_priority_result.append(discount)
+                case 3: highest_priority_result.append(discount)
+                default: continue;
+                }
+            }
+            
+            searchResults = highest_priority_result + high_priority_result + low_priority_result
+        }
+        else
+        {
+            
+        }
+        
+        
+        self.ReloadData()
+    }
+    
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        searchBar.endEditing(true)
     }
     
     func ReloadData()

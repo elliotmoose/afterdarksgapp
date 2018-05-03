@@ -10,6 +10,8 @@
 		A42846852094AD100066ED95 /* PasscodeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A42846842094ACDC0066ED95 /* PasscodeViewController.swift */; };
 		A42846862094AD150066ED95 /* PasscodeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A42846832094ACDC0066ED95 /* PasscodeViewController.xib */; };
 		A428468920997FC90066ED95 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A428468820997FC90066ED95 /* SettingsViewController.swift */; };
+		A428468C209AF02E0066ED95 /* SettingsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A428468A209AF02E0066ED95 /* SettingsTableViewCell.swift */; };
+		A428468D209AF02E0066ED95 /* SettingsTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A428468B209AF02E0066ED95 /* SettingsTableViewCell.xib */; };
 		A43142AA2089AC0A0081BA80 /* DiscountDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A43142A82089AC0A0081BA80 /* DiscountDetailViewController.swift */; };
 		A43142AB2089AC0A0081BA80 /* DiscountDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A43142A92089AC0A0081BA80 /* DiscountDetailViewController.xib */; };
 		A43142AD2089AD9C0081BA80 /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = A43142AC2089AD9C0081BA80 /* Event.swift */; };
@@ -62,6 +64,8 @@
 		A42846832094ACDC0066ED95 /* PasscodeViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PasscodeViewController.xib; sourceTree = "<group>"; };
 		A42846842094ACDC0066ED95 /* PasscodeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasscodeViewController.swift; sourceTree = "<group>"; };
 		A428468820997FC90066ED95 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
+		A428468A209AF02E0066ED95 /* SettingsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsTableViewCell.swift; sourceTree = "<group>"; };
+		A428468B209AF02E0066ED95 /* SettingsTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SettingsTableViewCell.xib; sourceTree = "<group>"; };
 		A43142A82089AC0A0081BA80 /* DiscountDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiscountDetailViewController.swift; sourceTree = "<group>"; };
 		A43142A92089AC0A0081BA80 /* DiscountDetailViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DiscountDetailViewController.xib; sourceTree = "<group>"; };
 		A43142AC2089AD9C0081BA80 /* Event.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Event.swift; sourceTree = "<group>"; };
@@ -139,6 +143,8 @@
 			isa = PBXGroup;
 			children = (
 				A428468820997FC90066ED95 /* SettingsViewController.swift */,
+				A428468A209AF02E0066ED95 /* SettingsTableViewCell.swift */,
+				A428468B209AF02E0066ED95 /* SettingsTableViewCell.xib */,
 			);
 			path = "Settings View";
 			sourceTree = "<group>";
@@ -395,6 +401,7 @@
 				A4E0DD8B2088DA2300B7348C /* Mohave.otf in Resources */,
 				A43142AB2089AC0A0081BA80 /* DiscountDetailViewController.xib in Resources */,
 				A4FC2073208ED90900753BB7 /* Assets.xcassets in Resources */,
+				A428468D209AF02E0066ED95 /* SettingsTableViewCell.xib in Resources */,
 				A4E0DD872088DA2300B7348C /* Mohave-Bold Italics.otf in Resources */,
 				A4E0DD812088DA1300B7348C /* BEBAS___.TTF in Resources */,
 				A4E0DD842088DA1D00B7348C /* Champagne & Limousines Italic.ttf in Resources */,
@@ -424,6 +431,7 @@
 			files = (
 				A4FC207B208F554E00753BB7 /* ColorManager.swift in Sources */,
 				A4FC2071208E227D00753BB7 /* UserManager.swift in Sources */,
+				A428468C209AF02E0066ED95 /* SettingsTableViewCell.swift in Sources */,
 				A4E0DD7E2088A57E00B7348C /* ExtensionsAndStructs.swift in Sources */,
 				A4A66ADA2090BB2D004E3E91 /* ImageManager.swift in Sources */,
 				A4E0DD802088C70700B7348C /* DiscountManager.swift in Sources */,
