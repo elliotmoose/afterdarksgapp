@@ -12,6 +12,8 @@
 		A428468920997FC90066ED95 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A428468820997FC90066ED95 /* SettingsViewController.swift */; };
 		A428468C209AF02E0066ED95 /* SettingsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A428468A209AF02E0066ED95 /* SettingsTableViewCell.swift */; };
 		A428468D209AF02E0066ED95 /* SettingsTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A428468B209AF02E0066ED95 /* SettingsTableViewCell.xib */; };
+		A4284690209DB72A0066ED95 /* ContactUsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A428468E209DB72A0066ED95 /* ContactUsViewController.swift */; };
+		A4284691209DB72A0066ED95 /* ContactUsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A428468F209DB72A0066ED95 /* ContactUsViewController.xib */; };
 		A43142AA2089AC0A0081BA80 /* DiscountDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A43142A82089AC0A0081BA80 /* DiscountDetailViewController.swift */; };
 		A43142AB2089AC0A0081BA80 /* DiscountDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A43142A92089AC0A0081BA80 /* DiscountDetailViewController.xib */; };
 		A43142AD2089AD9C0081BA80 /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = A43142AC2089AD9C0081BA80 /* Event.swift */; };
@@ -66,6 +68,8 @@
 		A428468820997FC90066ED95 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		A428468A209AF02E0066ED95 /* SettingsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsTableViewCell.swift; sourceTree = "<group>"; };
 		A428468B209AF02E0066ED95 /* SettingsTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SettingsTableViewCell.xib; sourceTree = "<group>"; };
+		A428468E209DB72A0066ED95 /* ContactUsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactUsViewController.swift; sourceTree = "<group>"; };
+		A428468F209DB72A0066ED95 /* ContactUsViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ContactUsViewController.xib; sourceTree = "<group>"; };
 		A43142A82089AC0A0081BA80 /* DiscountDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiscountDetailViewController.swift; sourceTree = "<group>"; };
 		A43142A92089AC0A0081BA80 /* DiscountDetailViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DiscountDetailViewController.xib; sourceTree = "<group>"; };
 		A43142AC2089AD9C0081BA80 /* Event.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Event.swift; sourceTree = "<group>"; };
@@ -145,6 +149,8 @@
 				A428468820997FC90066ED95 /* SettingsViewController.swift */,
 				A428468A209AF02E0066ED95 /* SettingsTableViewCell.swift */,
 				A428468B209AF02E0066ED95 /* SettingsTableViewCell.xib */,
+				A428468E209DB72A0066ED95 /* ContactUsViewController.swift */,
+				A428468F209DB72A0066ED95 /* ContactUsViewController.xib */,
 			);
 			path = "Settings View";
 			sourceTree = "<group>";
@@ -413,6 +419,7 @@
 				A4E0DD8C2088DA2700B7348C /* Montserrat-Bold.ttf in Resources */,
 				A4E0DD852088DA1D00B7348C /* Champagne & Limousines.ttf in Resources */,
 				A4E0DD3B208828CA00B7348C /* Main.storyboard in Resources */,
+				A4284691209DB72A0066ED95 /* ContactUsViewController.xib in Resources */,
 				A4E0DD832088DA1D00B7348C /* Champagne & Limousines Bold.ttf in Resources */,
 				A4E0DD7820887C8300B7348C /* BarDetailViewController.xib in Resources */,
 				A4E0DD892088DA2300B7348C /* Mohave-SemiBold Italics.otf in Resources */,
@@ -452,6 +459,7 @@
 				A4E0DD502088727900B7348C /* Discount.swift in Sources */,
 				A4E0DD53208876B200B7348C /* BarsViewController.swift in Sources */,
 				A4FC2079208F1ADF00753BB7 /* CircleProgressView.swift in Sources */,
+				A4284690209DB72A0066ED95 /* ContactUsViewController.swift in Sources */,
 				A42846852094AD100066ED95 /* PasscodeViewController.swift in Sources */,
 				A428468920997FC90066ED95 /* SettingsViewController.swift in Sources */,
 				A4E0DD4C2088722B00B7348C /* BarManager.swift in Sources */,

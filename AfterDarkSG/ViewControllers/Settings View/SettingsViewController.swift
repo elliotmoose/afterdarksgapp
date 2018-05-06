@@ -29,7 +29,7 @@ class SettingsViewController: UIViewController,UITableViewDelegate,UITableViewDa
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 6
+        return 2
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -41,19 +41,30 @@ class SettingsViewController: UIViewController,UITableViewDelegate,UITableViewDa
         }
         
         
+//        switch indexPath.row
+//        {
+//        case 0:
+//            cell?.label.text = "Settings"
+//        case 1:
+//            cell?.label.text = "About Us"
+//        case 2:
+//            cell?.label.text = "Fair Use Policy"
+//        case 3:
+//            cell?.label.text = "Contact Us"
+//        case 4:
+//            cell?.label.text = "FAQ"
+//        case 5:
+//            cell?.label.text = "Share Afterdark"
+//
+//        default:
+//            break;
+//        }
+        
         switch indexPath.row
         {
         case 0:
-            cell?.label.text = "Settings"
-        case 1:
-            cell?.label.text = "About Us"
-        case 2:
-            cell?.label.text = "Fair Use Policy"
-        case 3:
             cell?.label.text = "Contact Us"
-        case 4:
-            cell?.label.text = "FAQ"
-        case 5:
+        case 1:
             cell?.label.text = "Share Afterdark"
             
         default:
@@ -65,6 +76,18 @@ class SettingsViewController: UIViewController,UITableViewDelegate,UITableViewDa
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
+        
+        if indexPath.row == 0
+        {
+            navigationController?.pushViewController(ContactUsViewController.singleton, animated: true)
+        }
+        else if indexPath.row == 1
+        {
+            let vc = UIActivityViewController(activityItems: ["https://itunes.apple.com/app/id1181931586 \n Check out this cool app that helps me get epic discounts at bars!"], applicationActivities: [])
+            present(vc, animated: true)
+        }
+        
+        tableView.deselectRow(at: indexPath, animated: true)
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {

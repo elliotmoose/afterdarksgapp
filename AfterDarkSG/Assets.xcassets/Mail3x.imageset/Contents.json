@@ -2,17 +2,17 @@
   "images" : [
     {
       "idiom" : "universal",
-      "filename" : "Instagram.png",
+      "filename" : "Mail.png",
       "scale" : "1x"
     },
     {
       "idiom" : "universal",
-      "filename" : "Instagram2x.png",
+      "filename" : "Mail2x.png",
       "scale" : "2x"
     },
     {
       "idiom" : "universal",
-      "filename" : "Instagram3x.png",
+      "filename" : "Mail3x.png",
       "scale" : "3x"
     }
   ],

@@ -72,7 +72,7 @@
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                 <color key="separatorColor" red="0.62" green="0.49165999999999999" blue="0.19220000000000001" alpha="1" colorSpace="calibratedRGB"/>
                             </tableView>
-                            <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="ow1-Un-TOe">
+                            <searchBar contentMode="redraw" placeholder="Search Bars" translatesAutoresizingMaskIntoConstraints="NO" id="ow1-Un-TOe">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="56"/>
                                 <color key="barTintColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                 <textInputTraits key="textInputTraits" returnKeyType="search"/>
@@ -287,7 +287,7 @@
                                     </collectionViewCell>
                                 </cells>
                             </collectionView>
-                            <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="WQ3-ys-4fk">
+                            <searchBar contentMode="redraw" placeholder="Search Discounts" translatesAutoresizingMaskIntoConstraints="NO" id="WQ3-ys-4fk">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="56"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="56" id="LJW-x5-F6J"/>

@@ -11,6 +11,7 @@ class Network {
     //Urls
     //static let domain = "localhost:8080/"
     static let domain = "http://localhost:8080/"
+//    static let domain = "http://34.217.86.210:8080/"
     //static let domain = "http://afterdarkbars.com/AfterDarkServer/"
     
     init()
