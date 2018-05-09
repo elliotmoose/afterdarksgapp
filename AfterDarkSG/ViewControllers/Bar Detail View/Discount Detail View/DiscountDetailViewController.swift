@@ -53,20 +53,29 @@ class DiscountDetailViewController: UIViewController {
     }
     
     override func viewDidAppear(_ animated: Bool) {
-        //check if user owns this discount
-        let hasDiscount = DiscountManager.GetDiscounts().contains { (discount) -> Bool in
-            
-            if discount.ID == nil
-            {
-                return false
-            }
-            return discount.ID == selectedDiscount?.ID
-        }
         
-        if !hasDiscount
+        
+        if mode == .wallet
         {
-            self.Dismiss()
+            //check if user owns this discount
+            var hasDiscount = false
+            
+            for discount in UserManager.wallet
+            {
+                if discount.ID == selectedDiscount?.ID
+                {
+                    hasDiscount = true
+                }
+            }
+            
+            if !hasDiscount
+            {
+                self.Dismiss()
+            }
         }
+
+        
+        
     }
     
     public func Reset()
@@ -145,6 +154,9 @@ class DiscountDetailViewController: UIViewController {
                     if success
                     {
                         PopupManager.singleton.Popup(title: "Done!", body: "The discount has been added to your wallet :)", presentationViewCont: self)
+                        {
+                            self.Dismiss()
+                        }
                     }
                     else
                     {

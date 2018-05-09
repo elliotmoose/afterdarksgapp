@@ -116,6 +116,20 @@ public class DiscountManager
                     
                     if succ == "true"
                     {
+                        if let responseArray = dict["output"] as? [NSDictionary]
+                        {
+                            var discIDs = [Int64]()
+                            for discDict in responseArray
+                            {
+                                if let id = discDict["id"] as? Int64
+                                {
+                                    discIDs.append(id)
+                                }
+                            }
+                            
+                            UserManager.SetWallet(walletIDs: discIDs)
+                        }
+                        
                         callback(true,"discount claimed")
                     }
                     else
@@ -143,7 +157,6 @@ public class DiscountManager
         {
             NSLog(e.domain)
             callback(false,e.domain)
-
         }
     }
     
@@ -167,8 +180,18 @@ public class DiscountManager
                     
                     if succ == "true"
                     {
-                        guard let responseArray = dict["output"] as? [Int64] else {throw NSError("Invalid Response - array");}
-                        UserManager.SetWallet(walletIDs: responseArray)
+                        guard let responseArray = dict["output"] as? [NSDictionary] else {throw NSError("Invalid Response - array");}
+                        
+                        var ids = [Int64]()
+                        for dict in responseArray
+                        {
+                            if let id = dict["id"] as? Int64
+                            {
+                                ids.append(id)
+                            }
+                        }
+                        
+                        UserManager.SetWallet(walletIDs: ids)
                         discount.curAvailCount = discount.curAvailCount-1 //artificially change this
                         callback(true,"discount added")
                     }

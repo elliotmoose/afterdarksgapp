@@ -189,8 +189,18 @@ public class UserManager
                 
                 if requestSuccess == "true"
                 {
-                    guard let responseArray = response["output"] as? [Int64] else {throw NSError("Invalid Response - array");}
-                    SetWallet(walletIDs: responseArray)
+                    guard let responseArray = response["output"] as? [NSDictionary] else {throw NSError("Invalid Response - array");}
+                    
+                    var ids = [Int64]()
+                    for dict in responseArray
+                    {
+                        if let id = dict["id"] as? Int64
+                        {
+                            ids.append(id)
+                        }
+                    }
+                    
+                    SetWallet(walletIDs: ids)
                     return
                 }
                 else if let requestOutputString = response["output"] as? String
@@ -214,7 +224,6 @@ public class UserManager
     private static func PopuplateWalletFromString()
     {
         guard DiscountManager.GetDiscounts().count > 0 else {NSLog("Discounts likely not loaded yet");return;}
-        guard walletIDs.count > 0 else {NSLog("Wallet likely not loaded yet");return;}
         wallet.removeAll()
         
         for id in walletIDs
