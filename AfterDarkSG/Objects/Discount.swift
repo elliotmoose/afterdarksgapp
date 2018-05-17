@@ -17,6 +17,7 @@ public class Discount
     var ID : Int?
     var bar_ID : Int?
 
+    var expiry : TimeInterval = 0 //THIS IS FOR WALLET ONLY
     var curAvailCount : Int = 0
     var maxAvailCount : Int = 0
     
@@ -93,5 +94,10 @@ public class Discount
         
         
         return 0
+    }
+    
+    public func SetExpiryDate(_ epoch: TimeInterval)
+    {
+        self.expiry = epoch
     }
 }

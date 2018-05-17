@@ -26,10 +26,12 @@ class DiscountDetailViewController: UIViewController {
     @IBOutlet weak var barNameLabel: UILabel!
     @IBOutlet weak var addressSummaryLabel: UILabel!
     @IBOutlet weak var discountNameLabel: UILabel!
+    @IBOutlet weak var expiryLabel: UILabel!
     @IBOutlet weak var nameButton: UIButton!
     @IBOutlet weak var addressDetailLabel: UILabel!
     @IBOutlet weak var textView: UITextView!
     @IBOutlet weak var claimButton: UIButton!
+    
     
     var addressDetailDisplayed = false
     var selectedDiscount : Discount?
@@ -89,10 +91,12 @@ class DiscountDetailViewController: UIViewController {
         if mode == .wallet
         {
             claimButton.setTitle("Claim Now", for: .normal)
+            expiryLabel.alpha = 1
         }
         else
         {
             claimButton.setTitle("Add To Wallet", for: .normal)
+            expiryLabel.alpha = 0
         }
         
         self.mode = mode
@@ -122,6 +126,7 @@ class DiscountDetailViewController: UIViewController {
             self.nameButton.setAttributedTitle(attributeTitle, for: .normal)
             self.addressSummaryLabel.text = bar.address_summary
             self.addressDetailLabel.text = bar.address_full
+            self.expiryLabel.text = Date(timeIntervalSince1970: discount.expiry).GetDDMMYYHHMMString()
         }
     }
     

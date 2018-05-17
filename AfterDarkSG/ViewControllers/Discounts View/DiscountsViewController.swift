@@ -49,7 +49,25 @@ class DiscountsViewController: UIViewController,UICollectionViewDelegate,UIColle
         DiscountManager.didLoadDiscounts.addHandler {
             self.ReloadData()
         }
+        //Looks for single or multiple taps.
+        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: "DismissKeyboard")
+        
+        //Uncomment the line below if you want the tap not not interfere and cancel other interactions.
+        tap.cancelsTouchesInView = false
+        
+        view.addGestureRecognizer(tap)
+        
     }
+    
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        DismissKeyboard()
+    }
+    
+    @objc func DismissKeyboard()
+    {
+        view.endEditing(true)
+    }
+    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         if searchBar.text == ""
         {

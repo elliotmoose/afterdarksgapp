@@ -13,6 +13,8 @@ class WalletViewController: UIViewController,UICollectionViewDelegate,UICollecti
     @IBOutlet weak var walletCountLabel: UILabel!
     @IBOutlet weak var collectionView: UICollectionView!
     
+    var refreshButton : UIBarButtonItem?
+    
     override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
         super.init(nibName: "WalletViewController", bundle: Bundle.main)
         Bundle.main.loadNibNamed("WalletViewController", owner: self, options: nil)
@@ -42,7 +44,17 @@ class WalletViewController: UIViewController,UICollectionViewDelegate,UICollecti
         UserManager.didUpdateWallet.addHandler {
             self.ReloadData()
         }
+        
+        refreshButton = UIBarButtonItem(barButtonSystemItem: .refresh, target: self, action: #selector(Refresh))
+        refreshButton?.tintColor = UIColor.white
+        navigationItem.rightBarButtonItem = refreshButton
     }
+    
+    @objc func Refresh()
+    {
+        UserManager.LoadWallet()
+    }
+    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         
         let count = UserManager.wallet.count
@@ -90,12 +102,9 @@ class WalletViewController: UIViewController,UICollectionViewDelegate,UICollecti
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        
-        
-        
-        
-        let height = (Sizing.ScreenHeight() - 235/*photo gallery + button heights*/ - collectionView.contentInset.top*3 - Sizing.statusBarHeight - Sizing.tabBarHeight - Sizing.navBarHeight)/2
-        return CGSize(width: (Sizing.ScreenWidth() - 16/*border*/ - 6/*intercell*/)/2 , height: height)
+        //let height = (Sizing.ScreenHeight() - 235/*photo gallery + button heights*/ - collectionView.contentInset.top*3 - Sizing.statusBarHeight - Sizing.tabBarHeight - Sizing.navBarHeight)/2
+        let width = (Sizing.ScreenWidth() - 16/*border*/ - 6/*intercell*/)/2
+        return CGSize(width:  width , height: width*1.2)
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {

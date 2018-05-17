@@ -20,9 +20,10 @@ public class UserManager
     public static let didFailConnect = Event()
     public static let didUpdateWallet = Event()
     
+    private static var walletResponseObjects = [WalletObject]()
     public static var wallet = [Discount]()
-    public static var walletIDs = [Int64]()
-    
+//    public static var walletIDs = [Int64]()
+//    public static var walletExpiries = [TimeInterval]()
     
     public static let test_reset_user_id_on_load = false
     
@@ -190,17 +191,7 @@ public class UserManager
                 if requestSuccess == "true"
                 {
                     guard let responseArray = response["output"] as? [NSDictionary] else {throw NSError("Invalid Response - array");}
-                    
-                    var ids = [Int64]()
-                    for dict in responseArray
-                    {
-                        if let id = dict["id"] as? Int64
-                        {
-                            ids.append(id)
-                        }
-                    }
-                    
-                    SetWallet(walletIDs: ids)
+                    SetWallet(dictArray: responseArray)
                     return
                 }
                 else if let requestOutputString = response["output"] as? String
@@ -215,9 +206,24 @@ public class UserManager
         }
     }
     
-    public static func SetWallet(walletIDs: [Int64])
+    public static func SetWallet(dictArray : [NSDictionary])
     {
-        self.walletIDs = walletIDs
+        walletResponseObjects.removeAll()
+        
+        for dict in dictArray
+        {
+            if let id = dict["id"] as? Int64,let expiry = dict["expiry"] as? Int64
+            {
+                let walletObj = WalletObject(id: id, expiry: TimeInterval(expiry))
+                walletResponseObjects.append(walletObj)
+            }
+            else
+            {
+                NSLog("invalid wallet object")
+                continue
+            }
+        }
+        
         self.PopuplateWalletFromString()
     }
     
@@ -226,15 +232,25 @@ public class UserManager
         guard DiscountManager.GetDiscounts().count > 0 else {NSLog("Discounts likely not loaded yet");return;}
         wallet.removeAll()
         
-        for id in walletIDs
+        for i in 0..<walletResponseObjects.count
         {
+            let id = walletResponseObjects[i].id
+            let expiry = walletResponseObjects[i].expiry
+            
             if let discount = DiscountManager.GetDiscountWithID(Int(id))
             {
+                discount.SetExpiryDate(expiry)
                 wallet.append(discount)
             }
         }
         
         didUpdateWallet.raise()
     }
+}
+
+public struct WalletObject
+{
+    public var id : Int64
+    public var expiry : TimeInterval
 }
 

@@ -111,3 +111,37 @@ extension NSError{
         return domain
     }
 }
+
+
+extension Date
+{
+    
+    func GetPresentable() -> String
+    {
+        let df = DateFormatter()
+        df.dateFormat = "EEEE, dd LLLL YYYY"
+        return df.string(from: self)
+    }
+    
+    func GetDDMMYYHHMMString()->String
+    {
+        let df = DateFormatter()
+        df.dateFormat = "dd/MM/YY hh:mm a"
+        return df.string(from: self)
+    }
+    
+    func GetDDMMYYString() -> String
+    {
+        let df = DateFormatter()
+        df.dateFormat = "dd/MM/YY"
+        return df.string(from: self)
+    }
+    
+    func Get24hString() -> String
+    {
+        let df = DateFormatter()
+        df.dateFormat = "HH:mm"
+        return df.string(from: self)
+    }
+}
+

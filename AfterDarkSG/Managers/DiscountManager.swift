@@ -118,16 +118,7 @@ public class DiscountManager
                     {
                         if let responseArray = dict["output"] as? [NSDictionary]
                         {
-                            var discIDs = [Int64]()
-                            for discDict in responseArray
-                            {
-                                if let id = discDict["id"] as? Int64
-                                {
-                                    discIDs.append(id)
-                                }
-                            }
-                            
-                            UserManager.SetWallet(walletIDs: discIDs)
+                            UserManager.SetWallet(dictArray: responseArray)
                         }
                         
                         callback(true,"discount claimed")
@@ -182,16 +173,7 @@ public class DiscountManager
                     {
                         guard let responseArray = dict["output"] as? [NSDictionary] else {throw NSError("Invalid Response - array");}
                         
-                        var ids = [Int64]()
-                        for dict in responseArray
-                        {
-                            if let id = dict["id"] as? Int64
-                            {
-                                ids.append(id)
-                            }
-                        }
-                        
-                        UserManager.SetWallet(walletIDs: ids)
+                        UserManager.SetWallet(dictArray: responseArray)
                         discount.curAvailCount = discount.curAvailCount-1 //artificially change this
                         callback(true,"discount added")
                     }

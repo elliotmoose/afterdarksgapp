@@ -25,6 +25,7 @@
                 <outlet property="barNameLabel" destination="VuY-Vk-S4D" id="qfi-dc-72F"/>
                 <outlet property="claimButton" destination="sIc-Fn-sQX" id="Hvj-mj-rpa"/>
                 <outlet property="discountNameLabel" destination="LtQ-Gq-hxX" id="2gi-Kv-l5j"/>
+                <outlet property="expiryLabel" destination="cVh-A7-uhK" id="cgA-dK-ikl"/>
                 <outlet property="imageContainerView" destination="nLh-7J-OJP" id="wU7-v3-WfZ"/>
                 <outlet property="imageView" destination="o6d-Bs-P9I" id="9SA-v4-R7C"/>
                 <outlet property="nameButton" destination="M56-gM-uUK" id="lSU-ur-dbs"/>
@@ -83,6 +84,15 @@
                             <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                             <nil key="highlightedColor"/>
                         </label>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="EXPIRES: 15/04/18 12:30pm" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cVh-A7-uhK">
+                            <rect key="frame" x="8" y="212" width="164" height="20"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="20" id="hQU-QG-TPx"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" name="AvenirNextCondensed-Medium" family="Avenir Next Condensed" pointSize="14"/>
+                            <color key="textColor" red="0.85904947919999997" green="0.1953507971" blue="0.20641244180000001" alpha="1" colorSpace="calibratedRGB"/>
+                            <nil key="highlightedColor"/>
+                        </label>
                     </subviews>
                     <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                     <constraints>
@@ -90,7 +100,10 @@
                         <constraint firstAttribute="trailing" secondItem="sr2-xY-BgU" secondAttribute="trailing" constant="8" id="6XW-1s-bBl"/>
                         <constraint firstItem="VuY-Vk-S4D" firstAttribute="centerX" secondItem="nLh-7J-OJP" secondAttribute="centerX" id="7ar-t6-Nlb"/>
                         <constraint firstAttribute="height" constant="240" id="BOM-cM-25q"/>
+                        <constraint firstAttribute="bottom" secondItem="cVh-A7-uhK" secondAttribute="bottom" constant="8" id="BXC-Ru-ynR"/>
                         <constraint firstItem="sr2-xY-BgU" firstAttribute="leading" secondItem="nLh-7J-OJP" secondAttribute="leading" constant="8" id="G1A-ES-9w6"/>
+                        <constraint firstAttribute="trailing" secondItem="cVh-A7-uhK" secondAttribute="trailing" constant="8" id="MRw-6d-C4J"/>
+                        <constraint firstItem="cVh-A7-uhK" firstAttribute="leading" secondItem="nLh-7J-OJP" secondAttribute="leading" constant="8" id="MVT-qt-qmj"/>
                         <constraint firstItem="Jze-Z0-HmR" firstAttribute="centerX" secondItem="nLh-7J-OJP" secondAttribute="centerX" id="Ngh-0y-Oth"/>
                         <constraint firstItem="Jze-Z0-HmR" firstAttribute="top" secondItem="VuY-Vk-S4D" secondAttribute="bottom" constant="-6" id="OHY-id-1tp"/>
                         <constraint firstAttribute="width" constant="180" id="SIB-No-hey"/>
