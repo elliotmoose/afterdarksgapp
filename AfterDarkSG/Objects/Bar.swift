@@ -12,8 +12,11 @@ public class Bar : NSObject{
     var about : String = ""
     var price : String = ""
     var tags : String = ""
+    var openingHours : String = ""
     var contact : String = ""
     var website : String = ""
+    
+    var guestlistLink : String?
     
     //location
     var loc_long : Double = 0
@@ -67,6 +70,11 @@ public class Bar : NSObject{
             self.contact = contact
         }
         
+        if let openingHours = dict["openingHours"] as? String
+        {
+            self.openingHours = openingHours
+        }
+        
         if let website = dict["website"] as? String
         {
             self.website = website
@@ -109,6 +117,8 @@ public class Bar : NSObject{
         {
             self.passcode = passcode
         }
+        
+        self.guestlistLink = dict["guestlist"] as? String
 //
 //        else if let ratingCount = dict["ratingCount"] as? Int
 //        {

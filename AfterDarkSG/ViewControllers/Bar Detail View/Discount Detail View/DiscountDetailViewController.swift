@@ -126,7 +126,7 @@ class DiscountDetailViewController: UIViewController {
             self.nameButton.setAttributedTitle(attributeTitle, for: .normal)
             self.addressSummaryLabel.text = bar.address_summary
             self.addressDetailLabel.text = bar.address_full
-            self.expiryLabel.text = Date(timeIntervalSince1970: discount.expiry).GetDDMMYYHHMMString()
+            self.expiryLabel.text = "EXPIRES: "+Date(timeIntervalSince1970: discount.expiry).GetDDMMYYHHMMString()
         }
     }
     

@@ -29,7 +29,7 @@ class SettingsViewController: UIViewController,UITableViewDelegate,UITableViewDa
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 2
+        return 3
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -66,7 +66,8 @@ class SettingsViewController: UIViewController,UITableViewDelegate,UITableViewDa
             cell?.label.text = "Contact Us"
         case 1:
             cell?.label.text = "Share Afterdark"
-            
+        case 2:
+            cell?.label.text = "Help"
         default:
             break;
         }
@@ -85,6 +86,10 @@ class SettingsViewController: UIViewController,UITableViewDelegate,UITableViewDa
         {
             let vc = UIActivityViewController(activityItems: ["https://itunes.apple.com/app/id1181931586 \n Check out this cool app that helps me get epic discounts at bars!"], applicationActivities: [])
             present(vc, animated: true)
+        }
+        else if indexPath.row == 2
+        {
+            navigationController?.pushViewController(TextDisplayViewController.singleton, animated: true)
         }
         
         tableView.deselectRow(at: indexPath, animated: true)

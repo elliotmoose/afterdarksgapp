@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import WebKit
 
 class BarDetailViewController: UIViewController,UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout {
 
@@ -16,10 +17,12 @@ class BarDetailViewController: UIViewController,UICollectionViewDelegate,UIColle
     @IBOutlet weak var barNameLabel: UILabel!
     @IBOutlet weak var discountTabButton: UIButton!
     @IBOutlet weak var aboutTabButton: UIButton!
+    @IBOutlet weak var guestlistTabButton: UIButton!
     @IBOutlet weak var aboutTextView: UITextView!
     @IBOutlet weak var imageContainerView: UIView!
     @IBOutlet weak var imageView: UIImageView!
     
+    @IBOutlet weak var guestlistWebView: WKWebView!
     @IBOutlet weak var collectionView: UICollectionView!
     
     private var displayedBar : Bar?
@@ -36,15 +39,12 @@ class BarDetailViewController: UIViewController,UICollectionViewDelegate,UIColle
             self.ReloadData()
         }
         
-        
         //image gradient layer
         let gradientMaskLayer = CAGradientLayer()
         gradientMaskLayer.frame = CGRect(x: 0, y: 0, width: Sizing.ScreenWidth(), height: imageView.frame.height)
         gradientMaskLayer.colors = [UIColor.black.cgColor,UIColor.clear.cgColor]
         gradientMaskLayer.locations = [0.4,1]
         imageView.layer.mask = gradientMaskLayer
-        
-
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -58,7 +58,6 @@ class BarDetailViewController: UIViewController,UICollectionViewDelegate,UIColle
     public func ResetScene()
     {
         DidSelectTab(discountTabButton)
-        displayedBar = nil
     }
     
     @IBAction func DidSelectTab(_ sender: UIButton) {
@@ -68,29 +67,101 @@ class BarDetailViewController: UIViewController,UICollectionViewDelegate,UIColle
             discountTabButton.backgroundColor = UIColor.black
             aboutTabButton.setTitleColor(UIColor.black, for: .normal)
             aboutTabButton.backgroundColor = UIColor.white
+            guestlistTabButton.setTitleColor(UIColor.black, for: .normal)
+            guestlistTabButton.backgroundColor = UIColor.white
             
             aboutTextView.alpha = 0
             collectionView.alpha = 1
+            guestlistWebView.alpha = 0
         }
-        else
+        else if sender == aboutTabButton
         {
             aboutTabButton.setTitleColor(UIColor.white, for: .normal)
             aboutTabButton.backgroundColor = UIColor.black
             discountTabButton.setTitleColor(UIColor.black, for: .normal)
             discountTabButton.backgroundColor = UIColor.white
+            guestlistTabButton.setTitleColor(UIColor.black, for: .normal)
+            guestlistTabButton.backgroundColor = UIColor.white
             
             aboutTextView.alpha = 1
             collectionView.alpha = 0
+            guestlistWebView.alpha = 0
+        }
+        else if sender == guestlistTabButton
+        {
+            aboutTabButton.setTitleColor(UIColor.black, for: .normal)
+            aboutTabButton.backgroundColor = UIColor.white
+            discountTabButton.setTitleColor(UIColor.black, for: .normal)
+            discountTabButton.backgroundColor = UIColor.white
+            guestlistTabButton.setTitleColor(UIColor.white, for: .normal)
+            guestlistTabButton.backgroundColor = UIColor.black
+            
+            aboutTextView.alpha = 0
+            collectionView.alpha = 0
+            guestlistWebView.alpha = 1
         }
     }
 
     
     public func DisplayBar(_ bar : Bar)
     {
+        //format page -- gueslist
+        if let gueslistlink = bar.guestlistLink,let url = URL(string: gueslistlink)
+        {
+            guestlistTabButton.isHidden = false
+            discountTabButton.isHidden = true
+            DidSelectTab(guestlistTabButton)
+            guestlistWebView.loadHTMLString("", baseURL: nil)
+            guestlistWebView.load(URLRequest(url: url))
+        }
+        else
+        {
+            guestlistTabButton.isHidden = true
+            discountTabButton.isHidden = false
+        }
+        
         //self.title = bar.name
         barNameLabel.text = bar.name
         
         aboutTextView.text = bar.about
+        
+        let gap = NSMutableAttributedString(string: "\n")
+        let aboutAttString = NSMutableAttributedString(string: bar.about)
+        aboutAttString.addAttributes([NSAttributedStringKey.foregroundColor : UIColor.white], range: NSRange.init(location: 0, length: aboutAttString.length))
+        let addressAttString = NSMutableAttributedString(string: "Address:")
+        addressAttString.addAttributes([NSAttributedStringKey.foregroundColor : UIColor.white], range: NSRange.init(location: 0, length: addressAttString.length))
+        let addressDetailAttString = NSMutableAttributedString(string: bar.address_full)
+        addressDetailAttString.addAttributes([NSAttributedStringKey.foregroundColor : UIColor.gray], range: NSRange.init(location: 0, length: addressDetailAttString.length))
+        let openingAttString = NSMutableAttributedString(string: "Opening Hours:")
+        openingAttString.addAttributes([NSAttributedStringKey.foregroundColor : UIColor.white], range: NSRange.init(location: 0, length: openingAttString.length))
+        let openingDetailAttString = NSMutableAttributedString(string: bar.openingHours)
+        openingDetailAttString.addAttributes([NSAttributedStringKey.foregroundColor : UIColor.gray], range: NSRange.init(location: 0, length: openingDetailAttString.length))
+        let contactAttString = NSMutableAttributedString(string: "Contact:")
+        contactAttString.addAttributes([NSAttributedStringKey.foregroundColor : UIColor.white], range: NSRange.init(location: 0, length: contactAttString.length))
+        let contactDetailAttString = NSMutableAttributedString(string: bar.contact)
+        contactDetailAttString.addAttributes([NSAttributedStringKey.foregroundColor : UIColor.gray], range: NSRange.init(location: 0, length: contactDetailAttString.length))
+        
+        let finalText = NSMutableAttributedString(attributedString: aboutAttString)
+        finalText.append(gap)
+        finalText.append(gap)
+        finalText.append(addressAttString)
+        finalText.append(gap)
+        finalText.append(addressDetailAttString)
+        finalText.append(gap)
+        finalText.append(gap)
+        finalText.append(openingAttString)
+        finalText.append(gap)
+        finalText.append(openingDetailAttString)
+        finalText.append(gap)
+        finalText.append(gap)
+        finalText.append(contactAttString)
+        finalText.append(gap)
+        finalText.append(contactDetailAttString)
+        
+        finalText.addAttributes([NSAttributedStringKey.font : UIFont(name: "Avenir Next Condensed", size: 17) as Any], range: NSRange.init(location: 0, length: finalText.length))
+        aboutTextView.attributedText = finalText
+        aboutTextView.textAlignment = .center
+        
         
         imageView.image = bar.GetDisplayImage()
     

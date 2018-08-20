@@ -17,6 +17,8 @@
 		A43142AA2089AC0A0081BA80 /* DiscountDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A43142A82089AC0A0081BA80 /* DiscountDetailViewController.swift */; };
 		A43142AB2089AC0A0081BA80 /* DiscountDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A43142A92089AC0A0081BA80 /* DiscountDetailViewController.xib */; };
 		A43142AD2089AD9C0081BA80 /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = A43142AC2089AD9C0081BA80 /* Event.swift */; };
+		A49D796D20AD926C0026F7EC /* TextDisplayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A49D796B20AD926C0026F7EC /* TextDisplayViewController.swift */; };
+		A49D796E20AD926C0026F7EC /* TextDisplayViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A49D796C20AD926C0026F7EC /* TextDisplayViewController.xib */; };
 		A4A66ADA2090BB2D004E3E91 /* ImageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4A66AD92090BB2D004E3E91 /* ImageManager.swift */; };
 		A4E0DD34208828CA00B7348C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4E0DD33208828CA00B7348C /* AppDelegate.swift */; };
 		A4E0DD3B208828CA00B7348C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A4E0DD39208828CA00B7348C /* Main.storyboard */; };
@@ -49,6 +51,8 @@
 		A4E0DD8C2088DA2700B7348C /* Montserrat-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A4E0DD6C208878A300B7348C /* Montserrat-Bold.ttf */; };
 		A4E0DD8D2088DA2700B7348C /* Montserrat-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A4E0DD6D208878A300B7348C /* Montserrat-Regular.ttf */; };
 		A4E0DD8E2088DA2700B7348C /* SIL Open Font License.txt in Resources */ = {isa = PBXBuildFile; fileRef = A4E0DD6E208878A300B7348C /* SIL Open Font License.txt */; };
+		A4E204F220AD38E40019212B /* EmptyCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4E204F020AD38E40019212B /* EmptyCollectionViewCell.swift */; };
+		A4E204F320AD38E40019212B /* EmptyCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A4E204F120AD38E40019212B /* EmptyCollectionViewCell.xib */; };
 		A4FC206C208CC09D00753BB7 /* DiscountCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4FC206A208CC09D00753BB7 /* DiscountCollectionViewCell.swift */; };
 		A4FC206D208CC09D00753BB7 /* DiscountCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A4FC206B208CC09D00753BB7 /* DiscountCollectionViewCell.xib */; };
 		A4FC206F208CC35700753BB7 /* Sizing.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4FC206E208CC35700753BB7 /* Sizing.swift */; };
@@ -73,6 +77,8 @@
 		A43142A82089AC0A0081BA80 /* DiscountDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiscountDetailViewController.swift; sourceTree = "<group>"; };
 		A43142A92089AC0A0081BA80 /* DiscountDetailViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DiscountDetailViewController.xib; sourceTree = "<group>"; };
 		A43142AC2089AD9C0081BA80 /* Event.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Event.swift; sourceTree = "<group>"; };
+		A49D796B20AD926C0026F7EC /* TextDisplayViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextDisplayViewController.swift; sourceTree = "<group>"; };
+		A49D796C20AD926C0026F7EC /* TextDisplayViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TextDisplayViewController.xib; sourceTree = "<group>"; };
 		A4A66AD92090BB2D004E3E91 /* ImageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageManager.swift; sourceTree = "<group>"; };
 		A4E0DD30208828CA00B7348C /* AfterDarkSG.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AfterDarkSG.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A4E0DD33208828CA00B7348C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -110,6 +116,8 @@
 		A4E0DD7B2088A56A00B7348C /* PopupManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PopupManager.swift; sourceTree = "<group>"; };
 		A4E0DD7D2088A57D00B7348C /* ExtensionsAndStructs.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExtensionsAndStructs.swift; sourceTree = "<group>"; };
 		A4E0DD7F2088C70700B7348C /* DiscountManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiscountManager.swift; sourceTree = "<group>"; };
+		A4E204F020AD38E40019212B /* EmptyCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyCollectionViewCell.swift; sourceTree = "<group>"; };
+		A4E204F120AD38E40019212B /* EmptyCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EmptyCollectionViewCell.xib; sourceTree = "<group>"; };
 		A4FC206A208CC09D00753BB7 /* DiscountCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiscountCollectionViewCell.swift; sourceTree = "<group>"; };
 		A4FC206B208CC09D00753BB7 /* DiscountCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DiscountCollectionViewCell.xib; sourceTree = "<group>"; };
 		A4FC206E208CC35700753BB7 /* Sizing.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Sizing.swift; sourceTree = "<group>"; };
@@ -151,6 +159,8 @@
 				A428468B209AF02E0066ED95 /* SettingsTableViewCell.xib */,
 				A428468E209DB72A0066ED95 /* ContactUsViewController.swift */,
 				A428468F209DB72A0066ED95 /* ContactUsViewController.xib */,
+				A49D796B20AD926C0026F7EC /* TextDisplayViewController.swift */,
+				A49D796C20AD926C0026F7EC /* TextDisplayViewController.xib */,
 			);
 			path = "Settings View";
 			sourceTree = "<group>";
@@ -330,6 +340,8 @@
 			isa = PBXGroup;
 			children = (
 				A4FC207E208F81D000753BB7 /* WalletViewController.swift */,
+				A4E204F020AD38E40019212B /* EmptyCollectionViewCell.swift */,
+				A4E204F120AD38E40019212B /* EmptyCollectionViewCell.xib */,
 			);
 			path = "Wallet View";
 			sourceTree = "<group>";
@@ -407,6 +419,7 @@
 				A4E0DD8B2088DA2300B7348C /* Mohave.otf in Resources */,
 				A43142AB2089AC0A0081BA80 /* DiscountDetailViewController.xib in Resources */,
 				A4FC2073208ED90900753BB7 /* Assets.xcassets in Resources */,
+				A4E204F320AD38E40019212B /* EmptyCollectionViewCell.xib in Resources */,
 				A428468D209AF02E0066ED95 /* SettingsTableViewCell.xib in Resources */,
 				A4E0DD872088DA2300B7348C /* Mohave-Bold Italics.otf in Resources */,
 				A4E0DD812088DA1300B7348C /* BEBAS___.TTF in Resources */,
@@ -415,6 +428,7 @@
 				A4E0DD40208828CA00B7348C /* LaunchScreen.storyboard in Resources */,
 				A4E0DD582088778900B7348C /* BarTableViewCell.xib in Resources */,
 				A4E0DD8A2088DA2300B7348C /* Mohave-SemiBold.otf in Resources */,
+				A49D796E20AD926C0026F7EC /* TextDisplayViewController.xib in Resources */,
 				A4E0DD822088DA1D00B7348C /* Champagne & Limousines Bold Italic.ttf in Resources */,
 				A4E0DD8C2088DA2700B7348C /* Montserrat-Bold.ttf in Resources */,
 				A4E0DD852088DA1D00B7348C /* Champagne & Limousines.ttf in Resources */,
@@ -450,6 +464,7 @@
 				A4FC206C208CC09D00753BB7 /* DiscountCollectionViewCell.swift in Sources */,
 				A4E0DD4E2088725200B7348C /* Bar.swift in Sources */,
 				A4FC2081208F81FD00753BB7 /* DiscountsViewController.swift in Sources */,
+				A49D796D20AD926C0026F7EC /* TextDisplayViewController.swift in Sources */,
 				A43142AA2089AC0A0081BA80 /* DiscountDetailViewController.swift in Sources */,
 				A43142AD2089AD9C0081BA80 /* Event.swift in Sources */,
 				A4E0DD7220887A9300B7348C /* MainTabBarController.swift in Sources */,
@@ -458,6 +473,7 @@
 				A4FC2076208F1ABA00753BB7 /* SetupViewController.swift in Sources */,
 				A4E0DD502088727900B7348C /* Discount.swift in Sources */,
 				A4E0DD53208876B200B7348C /* BarsViewController.swift in Sources */,
+				A4E204F220AD38E40019212B /* EmptyCollectionViewCell.swift in Sources */,
 				A4FC2079208F1ADF00753BB7 /* CircleProgressView.swift in Sources */,
 				A4284690209DB72A0066ED95 /* ContactUsViewController.swift in Sources */,
 				A42846852094AD100066ED95 /* PasscodeViewController.swift in Sources */,

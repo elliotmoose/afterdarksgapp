@@ -36,6 +36,7 @@ class WalletViewController: UIViewController,UICollectionViewDelegate,UICollecti
         collectionView.delegate = self
         collectionView.dataSource = self
         collectionView.register(UINib(nibName: "DiscountCollectionViewCell", bundle: Bundle.main), forCellWithReuseIdentifier: "DiscountCollectionViewCell")
+        collectionView.register(UINib(nibName: "EmptyCollectionViewCell", bundle: Bundle.main), forCellWithReuseIdentifier: "EmptyCollectionViewCell")
         
         DiscountManager.didLoadDiscounts.addHandler {
             self.ReloadData()
@@ -46,7 +47,7 @@ class WalletViewController: UIViewController,UICollectionViewDelegate,UICollecti
         }
         
         refreshButton = UIBarButtonItem(barButtonSystemItem: .refresh, target: self, action: #selector(Refresh))
-        refreshButton?.tintColor = UIColor.white
+        refreshButton?.tintColor = ColorManager.theme
         navigationItem.rightBarButtonItem = refreshButton
     }
     
@@ -59,7 +60,7 @@ class WalletViewController: UIViewController,UICollectionViewDelegate,UICollecti
         
         let count = UserManager.wallet.count
         walletCountLabel.text = "\(count)/4"
-        return count
+        return 4
     }
     
     func numberOfSections(in collectionView: UICollectionView) -> Int {
@@ -83,6 +84,10 @@ class WalletViewController: UIViewController,UICollectionViewDelegate,UICollecti
 //            }
 //            
 //            cell.imageView.image = DiscountManager.images[index]
+        }
+        else
+        {
+            return collectionView.dequeueReusableCell(withReuseIdentifier: "EmptyCollectionViewCell", for: indexPath)
         }
         
         return cell

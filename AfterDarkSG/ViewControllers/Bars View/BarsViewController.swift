@@ -15,6 +15,8 @@ class BarsViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var searchBar: UISearchBar!
     
+    var refreshButton : UIBarButtonItem?
+    
     var searchResults = [Bar]()
     
     override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
@@ -64,7 +66,16 @@ class BarsViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
         tap.cancelsTouchesInView = false
         
         view.addGestureRecognizer(tap)
-
+        
+        refreshButton = UIBarButtonItem(barButtonSystemItem: .refresh, target: self, action: #selector(Refresh))
+        refreshButton?.tintColor = ColorManager.theme
+        navigationItem.rightBarButtonItem = refreshButton
+        navigationItem.leftBarButtonItem = UIBarButtonItem(title: "      ", style: .done, target: nil, action: nil)
+    }
+    
+    @objc func Refresh()
+    {
+        BarManager.LoadBars()
     }
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {

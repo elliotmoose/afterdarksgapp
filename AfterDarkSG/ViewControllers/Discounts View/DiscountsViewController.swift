@@ -15,6 +15,8 @@ class DiscountsViewController: UIViewController,UICollectionViewDelegate,UIColle
     @IBOutlet weak var searchBar: UISearchBar!
     private var searchResults = [Discount]()
     
+    var displayedDiscounts = [Discount]()
+    
     override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
         super.init(nibName: "DiscountsViewController", bundle: Bundle.main)
         Bundle.main.loadNibNamed("DiscountsViewController", owner: self, options: nil)
@@ -71,7 +73,7 @@ class DiscountsViewController: UIViewController,UICollectionViewDelegate,UIColle
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         if searchBar.text == ""
         {
-            return DiscountManager.GetDiscounts().count
+            return self.displayedDiscounts.count
         }
         else
         {
@@ -90,9 +92,9 @@ class DiscountsViewController: UIViewController,UICollectionViewDelegate,UIColle
         
         if searchBar.text == "" //if not searching
         {
-            if indexPath.row >= 0 && indexPath.row < DiscountManager.GetDiscounts().count
+            if indexPath.row >= 0 && indexPath.row < self.displayedDiscounts.count
             {
-                discountToDisplay = DiscountManager.GetDiscounts()[indexPath.row]
+                discountToDisplay = self.displayedDiscounts[indexPath.row]
             }
         }
         else
@@ -113,9 +115,9 @@ class DiscountsViewController: UIViewController,UICollectionViewDelegate,UIColle
 
         if searchBar.text == ""
         {
-            if indexPath.row >= 0 && indexPath.row < DiscountManager.GetDiscounts().count
+            if indexPath.row >= 0 && indexPath.row < self.displayedDiscounts.count
             {
-                let discount = DiscountManager.GetDiscounts()[indexPath.row]
+                let discount = self.displayedDiscounts[indexPath.row]
                 
                 if discount.curAvailCount != 0
                 {
@@ -169,6 +171,18 @@ class DiscountsViewController: UIViewController,UICollectionViewDelegate,UIColle
                 }
             }
             
+            highest_priority_result = highest_priority_result.sorted(by: { (a, b) -> Bool in
+                return a.curAvailCount > b.curAvailCount
+            })
+            
+            high_priority_result = high_priority_result.sorted(by: { (a, b) -> Bool in
+                return a.curAvailCount > b.curAvailCount
+            })
+            
+            low_priority_result = low_priority_result.sorted(by: { (a, b) -> Bool in
+                return a.curAvailCount > b.curAvailCount
+            })
+            
             searchResults = highest_priority_result + high_priority_result + low_priority_result
         }
         else
@@ -187,6 +201,12 @@ class DiscountsViewController: UIViewController,UICollectionViewDelegate,UIColle
     func ReloadData()
     {
         DispatchQueue.main.async {
+            //sort
+            self.displayedDiscounts = DiscountManager.GetDiscounts().sorted(by: { (a, b) -> Bool in
+                return a.curAvailCount > b.curAvailCount
+            })
+            
+            //reload data
             self.collectionView.reloadData()
         }
     }
